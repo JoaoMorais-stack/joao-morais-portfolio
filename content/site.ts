@@ -2,6 +2,7 @@
 // Fonte dos fatos: READMEs dos repositórios públicos de João Morais (auditados em
 // 2026-11-20) e o conteúdo já publicado no portfólio anterior. Nada aqui é
 // métrica inventada; onde o projeto é demonstração, isso está dito.
+// Tom: primeira pessoa, frases curtas e diretas, sem slogans.
 
 export const LOCALES = ["pt", "en"] as const;
 export type Locale = (typeof LOCALES)[number];
@@ -32,14 +33,14 @@ export const PROJECTS: Project[] = [
     repo: "https://github.com/JoaoMorais-stack/ebinex-platform",
     shot: "ebinex",
     stack: ["Node.js", "JavaScript", "Canvas", "node:test"],
-    kind: { pt: "Engenharia full stack", en: "Full-stack engineering" },
+    kind: { pt: "Aplicação full stack", en: "Full-stack application" },
     summary: {
-      pt: "Plataforma de paper trading com seis cenários de mercado fictícios, compra e venda com regras determinísticas, persistência local e testes de domínio, HTTP e limites de segurança.",
-      en: "Paper-trading platform with six fictional market scenarios, deterministic buy and sell rules, local persistence and tests for domain, HTTP and security boundaries.",
+      pt: "Simulador de investimentos com mercados fictícios. Dá para comprar e vender ativos com saldo virtual, acompanhar a carteira e consultar o histórico. Escrevi em Node.js sem bibliotecas externas e cobri as regras com 11 testes automatizados.",
+      en: "Investment simulator with fictional markets. You can buy and sell assets with a virtual balance, follow the portfolio and check the history. I wrote it in Node.js with no external libraries and covered the rules with 11 automated tests.",
     },
     note: {
-      pt: "Demonstração local. Mercados e saldos são fictícios.",
-      en: "Local demonstration. Markets and balances are fictional.",
+      pt: "Projeto de demonstração. Nenhum dado é real.",
+      en: "Demo project. None of the data is real.",
     },
   },
   {
@@ -50,12 +51,12 @@ export const PROJECTS: Project[] = [
     stack: ["Python", "SQLite", "HTTP local", "unittest"],
     kind: { pt: "Automação de processos", en: "Process automation" },
     summary: {
-      pt: "Versão pública e sanitizada de uma automação criada para a rotina de um hospital: organiza casos em uma fila de revisão priorizada, registra cada execução e gera relatório.",
-      en: "Public, sanitized version of an automation built for a hospital routine: turns cases into a prioritized review queue, records every run and exports a report.",
+      pt: "Versão pública de uma automação que fiz para a rotina de nutrição clínica do hospital onde trabalho. Ela organiza os casos por prioridade, registra cada execução e gera um relatório.",
+      en: "Public version of an automation I built for the clinical nutrition routine at the hospital where I work. It sorts cases by priority, logs every run and generates a report.",
     },
     note: {
-      pt: "Todos os casos são sintéticos. Nenhum dado hospitalar real.",
-      en: "Every case is synthetic. No real hospital data.",
+      pt: "Casos fictícios. Não há dado de paciente.",
+      en: "Fictional cases. No patient data.",
     },
   },
   {
@@ -66,12 +67,12 @@ export const PROJECTS: Project[] = [
     stack: ["Python", "SQLite", "API JSON", "JavaScript"],
     kind: { pt: "Aplicação web", en: "Web application" },
     summary: {
-      pt: "Diretório de equipe com capacidade semanal, ausências planejadas, filtros e uma API JSON validada, usando só a biblioteca padrão do Python.",
-      en: "Team directory with weekly capacity, planned time off, filters and a validated JSON API, built on the Python standard library alone.",
+      pt: "Cadastro de equipe com carga horária semanal, férias e afastamentos, além de busca e filtros. Usei só a biblioteca padrão do Python e SQLite.",
+      en: "Team directory with weekly hours, vacations and leave, plus search and filters. Built with the Python standard library and SQLite only.",
     },
     note: {
-      pt: "Pessoas e departamentos fictícios.",
-      en: "Fictional people and departments.",
+      pt: "Pessoas fictícias.",
+      en: "Fictional people.",
     },
   },
   {
@@ -80,14 +81,14 @@ export const PROJECTS: Project[] = [
     repo: "https://github.com/JoaoMorais-stack/shift-schedule-generator",
     shot: "shift",
     stack: ["Python", "SQLite", "HTML", "JavaScript"],
-    kind: { pt: "Regras operacionais", en: "Operational rules" },
+    kind: { pt: "Regras de escala", en: "Scheduling rules" },
     summary: {
-      pt: "Gera escalas de fim de semana e feriados respeitando rotação, férias e impedimentos, e preserva os ajustes manuais ao completar períodos.",
-      en: "Builds weekend and holiday rosters that respect rotation, leave and unavailability, keeping manual edits when filling a period.",
+      pt: "Monta escalas de fim de semana e feriado respeitando o rodízio, as férias e quem não pode trabalhar em cada data. Quando a escala é refeita, os ajustes feitos à mão continuam lá.",
+      en: "Builds weekend and holiday rosters that follow the rotation, vacations and who can't work on each date. When the roster is rebuilt, manual changes are kept.",
     },
     note: {
-      pt: "Registros de demonstração fictícios.",
-      en: "Fictional demonstration records.",
+      pt: "Dados de exemplo.",
+      en: "Sample data.",
     },
   },
   {
@@ -96,14 +97,14 @@ export const PROJECTS: Project[] = [
     repo: "https://github.com/JoaoMorais-stack/student-portal-automation-demo",
     shot: "student",
     stack: ["Python", "urllib", "HTTP local", "unittest"],
-    kind: { pt: "Automação defensiva", en: "Defensive automation" },
+    kind: { pt: "Automação com trava de segurança", en: "Automation with a safety lock" },
     summary: {
-      pt: "Automatiza um fluxo acadêmico repetitivo contra um portal simulado e bloqueia, no código, qualquer alvo fora da máquina local.",
-      en: "Automates a repetitive academic flow against a mock portal and blocks, in code, any target outside the local machine.",
+      pt: "Automatiza tarefas repetitivas de um portal acadêmico simulado. O código recusa qualquer endereço fora do computador local, para que não possa ser usado contra um sistema real.",
+      en: "Automates repetitive tasks on a simulated academic portal. The code refuses any address outside the local machine, so it can't be pointed at a real system.",
     },
     note: {
-      pt: "Portal simulado. Execução apenas local.",
-      en: "Mock portal. Runs locally only.",
+      pt: "Portal simulado. Só roda localmente.",
+      en: "Simulated portal. Runs locally only.",
     },
   },
 ];
@@ -132,10 +133,8 @@ export type Dictionary = {
     lede: string;
     featuredKind: string;
     repo: string;
-    captured: string;
     galleryHeading: string;
     galleryHint: string;
-    openProject: string;
   };
   about: {
     heading: string;
@@ -156,9 +155,9 @@ export type Dictionary = {
 export const DICT: Record<Locale, Dictionary> = {
   pt: {
     meta: {
-      title: "João Morais — cibersegurança, software e automação",
+      title: "João Morais | Desenvolvedor e pentester em formação",
       description:
-        "Portfólio de João Morais: aplicações web e mobile com testes, automação de processos e prática de segurança ofensiva em ambientes autorizados. São Paulo, Brasil.",
+        "Sou desenvolvedor e estudo segurança ofensiva em São Paulo. Aqui estão meus projetos de software e automação e o que venho estudando em pentest.",
     },
     nav: {
       work: "Projetos",
@@ -172,72 +171,70 @@ export const DICT: Record<Locale, Dictionary> = {
     hero: {
       first: "João",
       last: "Morais",
-      disciplines: ["Cibersegurança.", "Software.", "Automação."],
-      lede: "Desenvolvo aplicações e automações com testes, e pratico segurança ofensiva em ambientes autorizados. São Paulo, Brasil.",
+      disciplines: ["Desenvolvedor de software", "e pentester em formação"],
+      lede: "Faço sistemas web, aplicativos e automações. Estudo pentest em laboratórios autorizados. Moro em São Paulo.",
       ctaWork: "Ver projetos",
-      ctaContact: "Falar comigo",
-      renderNote: "Renderizado em tempo real: cada pixel segue um raio de luz curvado pela gravidade.",
+      ctaContact: "Contato",
+      renderNote: "Cena 3D renderizada em tempo real no navegador.",
       incl: "Inclinação",
       dist: "Distância",
-      scroll: "Role para explorar",
+      scroll: "Role para ver mais",
     },
     intro: {
       statement:
-        "Escrevo software que tira trabalho repetitivo das pessoas e estudo segurança ofensiva para entender como esse mesmo software pode falhar.",
+        "Comecei a programar para resolver problemas do meu próprio trabalho, no hospital. Hoje desenvolvo sistemas e automações e estudo pentest para entender como eles podem ser atacados.",
       items: [
         {
           title: "Segurança ofensiva",
           status: "Em formação",
-          body: "Laboratórios autorizados no TryHackMe, Hack The Box e no curso da Solyd, com metodologia OWASP e relatórios baseados em evidência.",
+          body: "Faço laboratórios no TryHackMe e no Hack The Box e o curso de pentest da Solyd. Meu foco é teste de aplicações web, seguindo o OWASP.",
         },
         {
-          title: "Software",
-          status: "Projetos publicados",
-          body: "Aplicações web e mobile com testes automatizados em Python, TypeScript, Node.js e React Native.",
+          title: "Desenvolvimento",
+          status: "Projetos no GitHub",
+          body: "Aplicações web em Python e Node.js e um app em React Native. Os projetos web têm testes automatizados.",
         },
         {
           title: "Automação",
-          status: "Uso real",
-          body: "Rotinas operacionais transformadas em fluxos auditáveis, a partir de problemas vividos no dia a dia de um hospital.",
+          status: "Em uso no trabalho",
+          body: "Automatizei rotinas do hospital, como juntar dados do sistema com as planilhas do setor. Uma versão sem dados reais está nos projetos.",
         },
       ],
     },
     work: {
       heading: "Projetos",
-      lede: "Software que roda. Cada tela abaixo foi capturada do projeto executando localmente.",
-      featuredKind: "Projeto em destaque",
-      repo: "Ver código no GitHub",
-      captured: "Captura real do app rodando em 127.0.0.1",
-      galleryHeading: "Mais projetos",
-      galleryHint: "Passe o cursor, toque ou use as setas para abrir cada projeto.",
-      openProject: "Abrir",
+      lede: "Todos estão no meu GitHub. As imagens são das aplicações rodando no meu computador, com dados fictícios.",
+      featuredKind: "Destaque",
+      repo: "Código no GitHub",
+      galleryHeading: "Outros projetos",
+      galleryHint: "Toque ou passe o mouse para abrir.",
     },
     about: {
       heading: "Sobre",
       body: [
-        "Sou Cabo da Força Aérea Brasileira e trabalho no Hospital de Força Aérea de São Paulo desde 2022. A rotina exige método, atenção a dados e consistência, e foi dela que vieram minhas primeiras automações.",
-        "Curso Tecnólogo em Cyber Segurança na Anhanguera, com conclusão prevista para 2028, e estudo pentest em laboratórios autorizados. Programação e automação são o que me deixam investigar, testar e documentar melhor.",
+        "Sou Cabo da Força Aérea Brasileira e trabalho no Hospital de Força Aérea de São Paulo desde 2022. Foi lá que comecei a automatizar tarefas repetitivas do meu setor.",
+        "Curso Tecnólogo em Cyber Segurança na Anhanguera, com conclusão prevista para 2028, e estudo pentest nas horas vagas. Quero trabalhar com testes de intrusão sem deixar de desenvolver as minhas próprias ferramentas.",
       ],
       photoAlt: "Retrato de João Morais de terno cinza e gravata vermelha.",
     },
     contact: {
-      heading: "Vamos conversar.",
-      body: "Estou aberto a projetos de software e automação e a oportunidades em segurança ofensiva.",
-      email: "Enviar e-mail",
+      heading: "Contato",
+      body: "Estou disponível para projetos de desenvolvimento e automação e para vagas em segurança ofensiva. O jeito mais rápido de falar comigo é por e-mail ou pelo LinkedIn.",
+      email: "E-mail",
       linkedin: "LinkedIn",
       github: "GitHub",
     },
-    footer: "João Morais. Site estático, sem rastreadores.",
+    footer: "João Morais",
     skip: "Pular para o conteúdo",
   },
   en: {
     meta: {
-      title: "João Morais — cybersecurity, software and automation",
+      title: "João Morais | Developer and pentester in training",
       description:
-        "Portfolio of João Morais: tested web and mobile applications, process automation and offensive security practice in authorized environments. São Paulo, Brazil.",
+        "I'm a developer studying offensive security in São Paulo, Brazil. Here are my software and automation projects and what I've been studying in pentesting.",
     },
     nav: {
-      work: "Work",
+      work: "Projects",
       about: "About",
       contact: "Contact",
       menu: "Menu",
@@ -248,62 +245,60 @@ export const DICT: Record<Locale, Dictionary> = {
     hero: {
       first: "João",
       last: "Morais",
-      disciplines: ["Cybersecurity.", "Software.", "Automation."],
-      lede: "I build tested applications and automations, and practice offensive security in authorized environments. São Paulo, Brazil.",
-      ctaWork: "See the work",
-      ctaContact: "Get in touch",
-      renderNote: "Rendered in real time: every pixel follows a ray of light bent by gravity.",
+      disciplines: ["Software developer", "and pentester in training"],
+      lede: "I build web systems, apps and automations. I study pentesting in authorized labs. I live in São Paulo, Brazil.",
+      ctaWork: "View projects",
+      ctaContact: "Contact",
+      renderNote: "3D scene rendered live in the browser.",
       incl: "Inclination",
       dist: "Distance",
-      scroll: "Scroll to explore",
+      scroll: "Scroll for more",
     },
     intro: {
       statement:
-        "I write software that takes repetitive work off people's hands, and I study offensive security to understand how that same software can fail.",
+        "I started programming to fix problems in my own job, at a hospital. Today I build systems and automations, and I study pentesting to understand how they can be attacked.",
       items: [
         {
           title: "Offensive security",
           status: "In training",
-          body: "Authorized labs on TryHackMe, Hack The Box and the Solyd course, with OWASP methodology and evidence-based reports.",
+          body: "I work through labs on TryHackMe and Hack The Box and take the Solyd pentest course. My focus is web application testing, following OWASP.",
         },
         {
-          title: "Software",
-          status: "Published projects",
-          body: "Web and mobile applications with automated tests in Python, TypeScript, Node.js and React Native.",
+          title: "Development",
+          status: "Projects on GitHub",
+          body: "Web applications in Python and Node.js and an app in React Native. The web projects have automated tests.",
         },
         {
           title: "Automation",
-          status: "Real use",
-          body: "Operational routines turned into auditable workflows, born from day-to-day problems inside a hospital.",
+          status: "Used at work",
+          body: "I automated routines at the hospital, such as merging data from the system with the team's spreadsheets. A version without real data is in the projects.",
         },
       ],
     },
     work: {
-      heading: "Work",
-      lede: "Software that runs. Every screen below was captured from the project running locally.",
-      featuredKind: "Featured project",
-      repo: "View code on GitHub",
-      captured: "Real capture of the app running on 127.0.0.1",
+      heading: "Projects",
+      lede: "All of them are on my GitHub. The images show the apps running on my computer with fictional data.",
+      featuredKind: "Featured",
+      repo: "Code on GitHub",
       galleryHeading: "More projects",
-      galleryHint: "Hover, tap or use the arrow keys to open each project.",
-      openProject: "Open",
+      galleryHint: "Tap or hover to open.",
     },
     about: {
       heading: "About",
       body: [
-        "I am a Corporal in the Brazilian Air Force and have worked at the São Paulo Air Force Hospital since 2022. The job demands method, care with data and consistency, and it is where my first automations came from.",
-        "I am studying for a technology degree in Cyber Security at Anhanguera, expected in 2028, and practice pentesting in authorized labs. Programming and automation are what let me investigate, test and document better.",
+        "I'm a Corporal in the Brazilian Air Force and have worked at the São Paulo Air Force Hospital since 2022. That's where I started automating repetitive tasks in my department.",
+        "I'm studying for a technology degree in Cyber Security at Anhanguera, expected in 2028, and I study pentesting in my spare time. I want to work in penetration testing and keep building my own tools.",
       ],
       photoAlt: "Portrait of João Morais in a grey suit and red tie.",
     },
     contact: {
-      heading: "Let's talk.",
-      body: "I am open to software and automation projects and to opportunities in offensive security.",
-      email: "Send an email",
+      heading: "Contact",
+      body: "I'm available for development and automation projects and for offensive security roles. The fastest way to reach me is email or LinkedIn.",
+      email: "Email",
       linkedin: "LinkedIn",
       github: "GitHub",
     },
-    footer: "João Morais. Static site, no trackers.",
+    footer: "João Morais",
     skip: "Skip to content",
   },
 };

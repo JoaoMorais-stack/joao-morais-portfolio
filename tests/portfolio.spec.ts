@@ -152,6 +152,6 @@ test.describe("interação", () => {
     await page.goto("/pt/");
     await page.getByRole("link", { name: "Read in English" }).click();
     await expect(page).toHaveURL(/\/en\/$/);
-    await expect(page.getByRole("link", { name: "See the work" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "View projects" })).toBeVisible();
   });
 });

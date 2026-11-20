@@ -55,9 +55,7 @@ export default function Featured({ project, t, lang }: { project: Project; t: Di
             <li key={s}>{s}</li>
           ))}
         </ul>
-        <p className="featured-note">
-          {project.note[lang]} {t.work.captured}.
-        </p>
+        <p className="featured-note">{project.note[lang]}</p>
         <a className="link-arrow" href={project.repo} target="_blank" rel="noopener noreferrer">
           {t.work.repo}
         </a>

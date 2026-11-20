@@ -19,7 +19,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
     "@context": "https://schema.org",
     "@type": "Person",
     name: "João Morais",
-    jobTitle: lang === "pt" ? "Desenvolvedor de software e estudante de cibersegurança" : "Software developer and cybersecurity student",
+    jobTitle: lang === "pt" ? "Desenvolvedor de software e pentester em formação" : "Software developer and pentester in training",
     address: { "@type": "PostalAddress", addressLocality: "São Paulo", addressCountry: "BR" },
     sameAs: ["https://github.com/JoaoMorais-stack", "https://www.linkedin.com/in/joaomorais-infosec/"],
   };
