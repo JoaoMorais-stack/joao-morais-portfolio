@@ -27,3 +27,6 @@ screenshots/**/_sheet.html
 screenshots/
 
 .vercel/
+
+.vercel
+.env*

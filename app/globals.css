@@ -533,6 +533,8 @@ main {
 .work {
   position: relative;
   padding: 12svh 0 0;
+  /* o celular flutuante da vitrine avança em 3D e não pode criar rolagem lateral */
+  overflow-x: clip;
 }
 
 .work-head {
