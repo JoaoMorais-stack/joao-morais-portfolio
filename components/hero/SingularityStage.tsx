@@ -43,6 +43,7 @@ export default function SingularityStage({ inclLabel, distLabel, note }: Props) 
       const renderer = createSingularity(canvas, poseAt(sceneBus.get(), mobile), {
         mobile,
         reducedMotion: reduced,
+        fixedQuality: params.has("fixedq"),
         onFirstFrame: () => {
           setLive(true);
           setMode("live");

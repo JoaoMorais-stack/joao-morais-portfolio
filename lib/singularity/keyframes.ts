@@ -15,7 +15,7 @@ const DESKTOP: SceneState[] = [
 
 const MOBILE: SceneState[] = [
   { incl: 7.5, dist: 27, yaw: 0.0, roll: 0.42, cx: 0.0, cy: 0.1, zoom: 0.98, exposure: 1.0, grid: 1.0 },
-  { incl: 34, dist: 38, yaw: 0.55, roll: 0.15, cx: 0.0, cy: 0.36, zoom: 1.1, exposure: 0.42, grid: 0.6 },
+  { incl: 34, dist: 38, yaw: 0.55, roll: 0.15, cx: 0.0, cy: 0.36, zoom: 1.1, exposure: 0.3, grid: 0.6 },
   { incl: 64, dist: 40, yaw: 0.9, roll: 0.0, cx: 0.0, cy: 0.46, zoom: 1.3, exposure: 0.2, grid: 0.15 },
   { incl: 74, dist: 34, yaw: 1.4, roll: 0.0, cx: 0.0, cy: 0.3, zoom: 1.1, exposure: 0.55, grid: 0.5 },
 ];

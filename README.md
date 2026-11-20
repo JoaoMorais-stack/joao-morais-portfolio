@@ -58,6 +58,7 @@ Sem Three.js nem Tailwind: a cena é um único shader de tela cheia em WebGL2 pu
 
 ## Hospedagem
 
-Build 100% estático (`out/`), pronto para hospedagem gratuita como Cloudflare Pages.
-**Publicação pendente de autorização.** Os termos atuais do plano gratuito ainda precisam
-ser conferidos antes do deploy.
+Build 100% estático (`out/`), publicado na Vercel com deploy automático a cada push:
+`main` vai para produção e as outras branches geram links de pré-visualização.
+Cabeçalhos de segurança em `vercel.json`. Rollback: promover um deploy anterior no painel
+da Vercel ou reverter o commit em `main`.

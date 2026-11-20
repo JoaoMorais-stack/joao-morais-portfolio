@@ -16,6 +16,8 @@ export type SceneState = {
 export type RendererOptions = {
   mobile: boolean;
   reducedMotion: boolean;
+  /** trava a escala interna (usado só em gravações, que pesam no PC e distorcem a medição) */
+  fixedQuality?: boolean;
   onFirstFrame?: () => void;
   onStats?: (s: { incl: number; dist: number; scale: number; fps: number }) => void;
 };
@@ -190,7 +192,7 @@ export function createSingularity(
     // mede o custo real e ajusta a resolução interna
     frameAcc += dt;
     frameCount++;
-    if (frameCount >= 40) {
+    if (frameCount >= 40 && !opts.fixedQuality) {
       const avg = frameAcc / frameCount;
       fps = 1 / avg;
       if (avg > 0.024 && scale > 0.42) {

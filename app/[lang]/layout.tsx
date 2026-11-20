@@ -19,8 +19,10 @@ const serif = Instrument_Serif({
   display: "swap",
 });
 
-// Endereço público definitivo ainda não definido (publicação pendente de autorização).
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3210";
+// Endereço público: variável explícita, senão o domínio de produção que a Vercel injeta no build.
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : "http://localhost:3210");
 
 export function generateStaticParams() {
   return LOCALES.map((lang) => ({ lang }));
