@@ -10,3 +10,6 @@
 8. **Tablet em retrato usa a câmera do celular** (`(max-width:1100px) and (orientation:portrait)`).
 9. **Blend "difference" no nome foi testado e descartado**: deixava letras turvas nos meios-tons do disco. A legibilidade veio da composição (singularidade entre as palavras).
 10. **Conteúdo só com fatos verificáveis** (READMEs + portfólio antigo). Projetos marcados como demonstração e dados fictícios.
+11. **Tom dos textos (2026-11-20, pedido do João):** primeira pessoa, frases curtas, só fatos verificáveis. Sem slogans, tríades com ponto final, metatexto sobre o site ou frases de efeito.
+12. **Buraco negro será substituído (2026-11-20):** o João achou bonito e imersivo, mas sem relação com pentest e programação. Fica como referência de nível visual; o próximo hero precisa representar o trabalho dele.
+13. **Fluxo de publicação:** trabalho na branch `feat/*` gera link de prévia na Vercel; aprovado, vai para `main` (produção, deploy automático).
