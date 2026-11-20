@@ -18,3 +18,14 @@ Pendente (aguarda revisão do João antes da fase 5):
 - Revisar textos pessoais (FAB/HFASP, e-mail) antes de publicar.
 - Conferir termos do Cloudflare Pages e publicar só com autorização.
 - Teste em aparelho real (iPhone/Android) e em GPU fraca.
+
+## 2026-11-20 — Publicação (autorizada pelo João)
+
+- GitHub: `JoaoMorais-stack/joao-morais-portfolio` (privado). `main` = produção.
+- Vercel: projeto `joao-morais-portfolio` (conta joaomorais-stack, plano Hobby).
+  Produção: https://joao-morais-portfolio-ecru.vercel.app — publicado pela CLI (`npx vercel@66.6.0 deploy --prod`).
+- Deploy automático por push **não ligado**: o app da Vercel no GitHub não tem acesso ao repositório novo.
+  Depois de liberar em github.com/settings/installations → Vercel → Repository access, rodar `npx vercel git connect`.
+- Verificado no endereço publicado: 18/18 testes Playwright (`BASE_URL=... npx playwright test`),
+  cabeçalhos de segurança, canonical/OG com o domínio de produção, cena WebGL ao vivo sem erros de console.
+- Corrigido após o deploy: sobra horizontal de 7–11 px do celular flutuante em 768 px.
