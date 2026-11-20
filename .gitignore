@@ -1,0 +1,27 @@
+# dependências e builds
+node_modules/
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# testes
+test-results/
+playwright-report/
+
+# material local de auditoria e pesquisa (repositórios clonados, capturas brutas, referências de terceiros)
+_audit/
+_audit_runtime/
+_captures/
+_research/
+
+# foto original em alta resolução (a versão otimizada fica em public/media/about)
+Foto Profissional.png
+
+.env*
+.DS_Store
+
+# capturas intermediárias de inspeção (as finais ficam em screenshots/final)
+screenshots/r*/
+screenshots/**/_sheet.html
+screenshots/
