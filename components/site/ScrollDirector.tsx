@@ -20,9 +20,11 @@ export default function ScrollDirector() {
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       document.documentElement.dataset.motion = reduced ? "reduced" : "full";
 
-      const seg = [0, 0, 0];
+      // cada segmento leva a câmera da pose i para a i+1; vale o último já iniciado
+      const seg = [0, 0, 0, 0];
       const push = () => {
-        const p = seg[2] > 0 ? 2 + seg[2] : seg[1] > 0 ? 1 + seg[1] : seg[0];
+        let p = seg[0];
+        for (let i = 1; i < seg.length; i++) if (seg[i] > 0) p = i + seg[i];
         sceneBus.set(p);
       };
 
@@ -48,13 +50,23 @@ export default function ScrollDirector() {
             push();
           },
         });
-        // segmento 2→3: retorno no contato
+        // segmento 2→3: segurança ofensiva, o mapa ao lado do método
+        ScrollTrigger.create({
+          trigger: "#seguranca",
+          start: "top bottom",
+          end: "top top",
+          onUpdate: (s) => {
+            seg[2] = s.progress;
+            push();
+          },
+        });
+        // segmento 3→4: retorno no contato
         ScrollTrigger.create({
           trigger: "#contato",
           start: "top bottom",
           end: "top top",
           onUpdate: (s) => {
-            seg[2] = s.progress;
+            seg[3] = s.progress;
             push();
           },
         });

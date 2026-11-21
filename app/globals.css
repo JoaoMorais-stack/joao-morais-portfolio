@@ -1019,6 +1019,175 @@ main {
 }
 
 /* --------------------------------------------------------------------------
+   Segurança ofensiva: texto à esquerda, mapa de ataque ao lado
+   -------------------------------------------------------------------------- */
+
+.security {
+  position: relative;
+  padding: clamp(110px, 18svh, 200px) var(--gutter) clamp(110px, 18svh, 200px);
+}
+
+.security::before,
+.security::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+/* emenda suave com a galeria (opaca) acima e o "sobre" (opaco) abaixo */
+.security::before {
+  top: 0;
+  height: 28svh;
+  background: linear-gradient(var(--space), transparent);
+}
+
+.security::after {
+  bottom: 0;
+  height: 22svh;
+  background: linear-gradient(transparent, var(--space));
+}
+
+.security-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.security-head,
+.security-method,
+.security-grid {
+  max-width: min(46rem, 50vw);
+}
+
+.security-lede {
+  margin: 24px 0 0;
+  max-width: 46ch;
+  color: var(--ivory-dim);
+  font-size: 1.12rem;
+}
+
+.security-sub {
+  margin: 0 0 18px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
+.security-method {
+  margin-top: clamp(56px, 9svh, 96px);
+}
+
+.steps {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 3.2rem minmax(0, 1fr);
+  gap: 12px;
+  padding: 18px 0;
+  border-top: 1px solid var(--ivory-faint);
+}
+
+.step:last-child {
+  border-bottom: 1px solid var(--ivory-faint);
+}
+
+.step-num {
+  padding-top: 3px;
+  color: var(--photon);
+  font-weight: 650;
+  font-stretch: 125%;
+  font-variant-numeric: tabular-nums;
+}
+
+.step-title {
+  margin: 0 0 4px;
+  font-weight: 650;
+  font-stretch: 112%;
+  font-size: 1.1rem;
+}
+
+.step-body {
+  margin: 0;
+  max-width: 52ch;
+  color: var(--ivory-dim);
+}
+
+.security-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 44px 48px;
+  margin: clamp(56px, 9svh, 96px) 0 40px;
+}
+
+.practice {
+  margin: 0;
+}
+
+.practice div {
+  padding: 10px 0;
+  border-top: 1px solid var(--ivory-faint);
+}
+
+.practice dt {
+  font-weight: 650;
+}
+
+.practice dd {
+  margin: 0;
+  color: var(--ivory-dim);
+  font-size: 0.94rem;
+}
+
+.security-text {
+  margin: 0;
+  color: var(--ivory-dim);
+}
+
+.certs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.certs li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 14px;
+  border: 1px solid var(--ivory-faint);
+  border-radius: 8px;
+}
+
+.cert-name {
+  font-weight: 700;
+  font-stretch: 120%;
+}
+
+.cert-status {
+  color: var(--ivory-dim);
+  font-size: 0.82rem;
+}
+
+.security-note {
+  margin: 10px 0 0;
+  color: var(--ivory-dim);
+  font-size: 0.85rem;
+}
+
+/* --------------------------------------------------------------------------
    Sobre e contato
    -------------------------------------------------------------------------- */
 
@@ -1218,6 +1387,12 @@ main {
   .work-head {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .security-head,
+  .security-method,
+  .security-grid {
+    max-width: 40rem;
   }
 
   .intro-list {
@@ -1438,6 +1613,14 @@ main {
   }
 
   .about {
+    grid-template-columns: 1fr;
+  }
+
+  .security {
+    padding-top: 30svh;
+  }
+
+  .security-grid {
     grid-template-columns: 1fr;
   }
 

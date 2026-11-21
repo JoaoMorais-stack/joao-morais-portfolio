@@ -7,6 +7,7 @@ import Intro from "@/components/site/Intro";
 import Featured from "@/components/work/Featured";
 import SqueezeGallery from "@/components/work/SqueezeGallery";
 import { About, Contact } from "@/components/site/AboutContact";
+import Security from "@/components/site/Security";
 import ScrollDirector from "@/components/site/ScrollDirector";
 
 export default async function Page({ params }: { params: Promise<{ lang: string }> }) {
@@ -44,6 +45,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
           <Featured project={featured} t={t} lang={lang} />
           <SqueezeGallery projects={rest} t={t} lang={lang} />
         </section>
+        <Security t={t} />
         <About t={t} />
         <Contact t={t} />
       </main>

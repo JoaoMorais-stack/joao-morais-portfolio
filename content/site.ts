@@ -11,6 +11,7 @@ export const isLocale = (v: string): v is Locale => (LOCALES as readonly string[
 
 export const LINKS = {
   github: "https://github.com/JoaoMorais-stack",
+  pentestLabs: "https://github.com/JoaoMorais-stack/pentest-labs",
   linkedin: "https://www.linkedin.com/in/joaomorais-infosec/",
   email: "vitor.infosec@gmail.com",
 } as const;
@@ -111,7 +112,7 @@ export const PROJECTS: Project[] = [
 
 export type Dictionary = {
   meta: { title: string; description: string };
-  nav: { work: string; about: string; contact: string; menu: string; close: string; switchTo: string; switchLabel: string };
+  nav: { work: string; security: string; about: string; contact: string; menu: string; close: string; switchTo: string; switchLabel: string };
   hero: {
     first: string;
     last: string;
@@ -139,6 +140,22 @@ export type Dictionary = {
     galleryHeading: string;
     galleryHint: string;
   };
+  security: {
+    heading: string;
+    lede: string;
+    methodHeading: string;
+    steps: { title: string; body: string }[];
+    practiceHeading: string;
+    practice: { name: string; body: string }[];
+    toolsHeading: string;
+    tools: string[];
+    notesHeading: string;
+    notes: string;
+    certHeading: string;
+    certs: { name: string; status: string }[];
+    certNote: string;
+    repoLink: string;
+  };
   about: {
     heading: string;
     body: string[];
@@ -164,6 +181,7 @@ export const DICT: Record<Locale, Dictionary> = {
     },
     nav: {
       work: "Projetos",
+      security: "Segurança",
       about: "Sobre",
       contact: "Contato",
       menu: "Menu",
@@ -221,6 +239,50 @@ export const DICT: Record<Locale, Dictionary> = {
       galleryHeading: "Outros projetos",
       galleryHint: "Toque ou passe o mouse para abrir.",
     },
+    security: {
+      heading: "Segurança ofensiva",
+      lede: "Ainda não trabalho como pentester. Estou me preparando com laboratórios e sigo o mesmo método em todo exercício, documentado no meu GitHub.",
+      methodHeading: "Como eu conduzo um teste",
+      steps: [
+        {
+          title: "Autorização e escopo",
+          body: "Antes de qualquer ferramenta, registro quem autorizou, o que pode ser testado, o horário e o que é proibido. Sem autorização, não há teste.",
+        },
+        {
+          title: "Mapeamento",
+          body: "Identifico os serviços expostos e os limites da aplicação dentro do escopo aprovado.",
+        },
+        {
+          title: "Hipótese e validação",
+          body: "Formulo uma hipótese de falha e confirmo com o método menos invasivo possível, guardando só a evidência necessária.",
+        },
+        {
+          title: "Comunicação do risco",
+          body: "Descrevo o componente afetado e o impacto real, separo fato de suposição e proponho a correção e como retestar.",
+        },
+        {
+          title: "Revisão antes de publicar",
+          body: "Troco dados do alvo por marcadores e removo segredos, dados pessoais e flags antes de qualquer publicação.",
+        },
+      ],
+      practiceHeading: "Onde eu pratico",
+      practice: [
+        { name: "Solyd", body: "Curso de pentest com prática orientada." },
+        { name: "TryHackMe", body: "Trilhas e laboratórios guiados." },
+        { name: "Hack The Box", body: "Máquinas e desafios autorizados." },
+      ],
+      toolsHeading: "Ferramentas que uso nos laboratórios",
+      tools: ["Burp Suite", "OWASP ZAP", "Nuclei", "SQLMap", "Wfuzz", "Subfinder", "HTTPX", "Kali Linux"],
+      notesHeading: "Anotações",
+      notes: "Organizo o que estudo num cofre de notas no Obsidian: OWASP Top 10, XSS, SQLi, IDOR, LFI, RCE, além de redes, DNS e Linux.",
+      certHeading: "Certificações",
+      certs: [
+        { name: "eJPT", status: "Em preparação" },
+        { name: "OSCP", status: "Objetivo a longo prazo" },
+      ],
+      certNote: "Nenhuma concluída ainda. Atualizo aqui quando passar na prova.",
+      repoLink: "Metodologia e modelos de relatório no GitHub",
+    },
     about: {
       heading: "Sobre",
       body: [
@@ -247,6 +309,7 @@ export const DICT: Record<Locale, Dictionary> = {
     },
     nav: {
       work: "Projects",
+      security: "Security",
       about: "About",
       contact: "Contact",
       menu: "Menu",
@@ -303,6 +366,50 @@ export const DICT: Record<Locale, Dictionary> = {
       repo: "Code on GitHub",
       galleryHeading: "More projects",
       galleryHint: "Tap or hover to open.",
+    },
+    security: {
+      heading: "Offensive security",
+      lede: "I don't work as a pentester yet. I'm preparing through labs and follow the same method in every exercise, documented on my GitHub.",
+      methodHeading: "How I run a test",
+      steps: [
+        {
+          title: "Authorization and scope",
+          body: "Before any tool, I record who authorized it, what can be tested, the time window and what is off-limits. No authorization, no test.",
+        },
+        {
+          title: "Mapping",
+          body: "I identify exposed services and the application's boundaries inside the approved scope.",
+        },
+        {
+          title: "Hypothesis and validation",
+          body: "I form a hypothesis about a flaw and confirm it with the least invasive method available, keeping only the evidence I need.",
+        },
+        {
+          title: "Communicating risk",
+          body: "I describe the affected component and the real impact, separate facts from assumptions, and propose the fix and how to retest it.",
+        },
+        {
+          title: "Review before publishing",
+          body: "I replace target details with placeholders and remove secrets, personal data and flags before anything is published.",
+        },
+      ],
+      practiceHeading: "Where I practice",
+      practice: [
+        { name: "Solyd", body: "Pentest course with guided practice." },
+        { name: "TryHackMe", body: "Learning paths and guided labs." },
+        { name: "Hack The Box", body: "Authorized machines and challenges." },
+      ],
+      toolsHeading: "Tools I use in the labs",
+      tools: ["Burp Suite", "OWASP ZAP", "Nuclei", "SQLMap", "Wfuzz", "Subfinder", "HTTPX", "Kali Linux"],
+      notesHeading: "Notes",
+      notes: "I keep what I study in an Obsidian vault: OWASP Top 10, XSS, SQLi, IDOR, LFI, RCE, plus networking, DNS and Linux.",
+      certHeading: "Certifications",
+      certs: [
+        { name: "eJPT", status: "Preparing" },
+        { name: "OSCP", status: "Long-term goal" },
+      ],
+      certNote: "None completed yet. I'll update this when I pass the exam.",
+      repoLink: "Methodology and report templates on GitHub",
     },
     about: {
       heading: "About",

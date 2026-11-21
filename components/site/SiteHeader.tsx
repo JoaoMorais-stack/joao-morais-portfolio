@@ -16,6 +16,7 @@ export default function SiteHeader({ t, lang }: { t: Dictionary; lang: Locale })
 
   const links = [
     { href: "#projetos", label: t.nav.work },
+    { href: "#seguranca", label: t.nav.security },
     { href: "#sobre", label: t.nav.about },
     { href: "#contato", label: t.nav.contact },
   ];

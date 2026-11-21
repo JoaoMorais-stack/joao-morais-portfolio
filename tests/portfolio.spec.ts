@@ -51,6 +51,19 @@ test.describe("conteúdo e SEO", () => {
   });
 });
 
+test.describe("segurança ofensiva", () => {
+  test("a seção mostra o método em ordem e não declara certificação concluída", async ({ page }) => {
+    await page.goto("/pt/");
+    const section = page.locator("#seguranca");
+    await expect(section.getByRole("heading", { level: 2, name: "Segurança ofensiva" })).toBeVisible();
+    await expect(section.locator(".step")).toHaveCount(5);
+    await expect(section.locator(".step-title").first()).toHaveText("Autorização e escopo");
+    await expect(section).toContainText("Nenhuma concluída ainda");
+    await expect(section.locator('a[href="https://github.com/JoaoMorais-stack/pentest-labs"]')).toHaveCount(1);
+    await expect(page.locator("#site-nav").getByRole("link", { name: "Segurança", exact: true })).toHaveAttribute("href", "#seguranca");
+  });
+});
+
 test.describe("cena WebGL e alternativas", () => {
   test("a cena entra em modo ao vivo quando há WebGL2", async ({ page }) => {
     await page.goto("/pt/");

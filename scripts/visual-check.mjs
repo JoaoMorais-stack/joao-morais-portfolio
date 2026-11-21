@@ -31,6 +31,8 @@ const where = {
   },
   meta: () => document.querySelector(".featured-meta").getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.3,
   gallery: () => document.querySelector(".gallery").getBoundingClientRect().top + window.scrollY,
+  security: () => document.querySelector("#seguranca").getBoundingClientRect().top + window.scrollY + window.innerHeight * 0.15,
+  security2: () => document.querySelector(".security-grid").getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.2,
   about: () => document.querySelector("#sobre").getBoundingClientRect().top + window.scrollY,
   contact: () => document.querySelector("#contato").getBoundingClientRect().top + window.scrollY,
 };
