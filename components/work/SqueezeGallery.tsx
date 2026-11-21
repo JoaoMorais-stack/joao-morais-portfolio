@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import type { Dictionary, Locale, Project } from "@/content/site";
+import { CASE_UI } from "@/content/cases";
 
 // Galeria em faixas: um projeto aberto, os demais comprimidos.
 // Abre por hover (ponteiro fino), foco, toque/clique e setas do teclado.
@@ -75,9 +76,14 @@ export default function SqueezeGallery({ projects, t, lang }: { projects: Projec
                       <li key={s}>{s}</li>
                     ))}
                   </ul>
-                  <a className="link-arrow" href={p.repo} target="_blank" rel="noopener noreferrer" tabIndex={open ? 0 : -1}>
-                    {t.work.repo}
-                  </a>
+                  <div className="panel-links">
+                    <a className="link-arrow" href={`/${lang}/cases/${p.slug}/`} tabIndex={open ? 0 : -1}>
+                      {CASE_UI[lang].viewCase}
+                    </a>
+                    <a className="link-arrow link-quiet" href={p.repo} target="_blank" rel="noopener noreferrer" tabIndex={open ? 0 : -1}>
+                      GitHub
+                    </a>
+                  </div>
                 </div>
               </div>
             </li>

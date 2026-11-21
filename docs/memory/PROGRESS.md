@@ -47,3 +47,12 @@ cases sanitizados de projetos privados (com autorização), limpeza da documenta
   OSCP "objetivo a longo prazo", com aviso "nenhuma concluída". **Confirmar com o João se o status mudou.**
 - O mapa de ataque ganhou uma pose nova (camadas separadas ao lado do método). 19/19 testes.
 - Aprovada pelo João e publicada (main = baa0897). 19/19 testes no endereço de produção.
+
+## 2026-11-21 — Páginas de case (prévia)
+
+- Branch `feat/case-pages`. Rota estática `/[lang]/cases/[slug]/` para os 5 projetos (10 páginas).
+- Conteúdo só de README/código: problema, recursos, arquitetura (fluxo), testes e segurança, limites, como rodar.
+- Corrigida afirmação não comprovada: a automação real do hospital é de consolidação sistema ↔ planilhas;
+  a demo usa casos de nutrição fictícios (não "a rotina de nutrição do hospital").
+- Logo trocado para três camadas empilhadas (coerente com o mapa de ataque). Mandarin App descartado pelo João (incompleto).
+- 23/23 testes.

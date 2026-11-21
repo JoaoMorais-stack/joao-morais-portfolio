@@ -135,7 +135,7 @@ a {
 }
 
 .mark:hover svg {
-  transform: rotate(-24deg);
+  transform: translateY(-2px);
 }
 
 .nav {
@@ -788,9 +788,23 @@ main {
   font-size: 0.88rem;
 }
 
-.featured-meta .link-arrow {
+.featured-links {
   grid-area: link;
-  justify-self: start;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  margin-top: 8px;
+}
+
+.panel-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+}
+
+.link-quiet {
+  color: var(--ivory-dim);
 }
 
 .stack {
@@ -1320,6 +1334,276 @@ main {
 
 .site-footer p {
   margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Páginas de case
+   -------------------------------------------------------------------------- */
+
+.case {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 120px var(--gutter) 64px;
+}
+
+.case-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  color: var(--ivory-dim);
+  text-decoration: none;
+  font-size: 0.92rem;
+}
+
+.case-back::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-left: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+}
+
+.case-back:hover {
+  color: var(--ivory);
+}
+
+.case-hero {
+  margin: clamp(32px, 6svh, 64px) 0 clamp(40px, 7svh, 72px);
+  max-width: 62rem;
+}
+
+.case-kind {
+  margin: 0 0 12px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.6rem;
+}
+
+.case-title {
+  margin: 0 0 24px;
+  font-weight: 760;
+  font-stretch: 125%;
+  font-size: clamp(2.8rem, 8vw, 7.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+.case-summary {
+  margin: 0 0 24px;
+  max-width: 54ch;
+  font-size: 1.15rem;
+}
+
+.case-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 28px;
+  padding: 0;
+  list-style: none;
+}
+
+.case-facts li {
+  padding: 6px 12px;
+  border: 1px solid var(--ivory-faint);
+  border-radius: 6px;
+  color: var(--ivory-dim);
+  font-size: 0.85rem;
+}
+
+.case-facts li:nth-child(2) {
+  color: var(--ivory);
+  border-color: rgba(125, 150, 255, 0.5);
+}
+
+.case-shots {
+  position: relative;
+  margin: 0 0 clamp(80px, 14svh, 160px);
+  padding-right: 9%;
+}
+
+.case-phone {
+  position: absolute;
+  right: 0;
+  bottom: -8%;
+  width: 22%;
+  border-radius: 26px;
+  overflow: hidden;
+  border: 5px solid #1b1c21;
+  background: #000;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(236, 230, 218, 0.12);
+}
+
+.case-phone img {
+  width: 100%;
+  aspect-ratio: 9 / 17;
+  object-fit: cover;
+  object-position: top;
+}
+
+.case-body {
+  display: grid;
+  gap: clamp(48px, 8svh, 88px);
+}
+
+.case-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 16px 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--ivory-faint);
+}
+
+.case-section h2 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+  line-height: 1.1;
+}
+
+.case-lead {
+  margin: 0;
+  max-width: 60ch;
+  font-size: 1.1rem;
+}
+
+.case-list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-list li {
+  position: relative;
+  padding-left: 22px;
+  max-width: 62ch;
+}
+
+.case-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 10px;
+  height: 1px;
+  background: var(--photon);
+}
+
+.case-list-dim li {
+  color: var(--ivory-dim);
+}
+
+.case-list-dim li::before {
+  background: var(--ivory-dim);
+}
+
+/* arquitetura como fluxo vertical de blocos ligados */
+.flow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.flow li {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 14px;
+  border: 1px solid rgba(236, 230, 218, 0.28);
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 0.92rem;
+}
+
+.flow li + li::before {
+  content: "";
+  position: absolute;
+  left: 22px;
+  top: -23px;
+  width: 1px;
+  height: 22px;
+  background: var(--photon);
+}
+
+.case-note {
+  margin: 0 0 16px;
+  max-width: 60ch;
+  color: var(--ivory-dim);
+}
+
+.case-code {
+  margin: 0;
+  padding: 18px 20px;
+  overflow-x: auto;
+  border: 1px solid var(--ivory-faint);
+  border-radius: 8px;
+  background: var(--surface);
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.case-next {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: clamp(80px, 14svh, 160px);
+  padding: 32px 0;
+  border-top: 1px solid var(--ivory-faint);
+  border-bottom: 1px solid var(--ivory-faint);
+  text-decoration: none;
+}
+
+.case-next-label {
+  color: var(--ivory-dim);
+  font-size: 0.9rem;
+}
+
+.case-next-name {
+  font-weight: 760;
+  font-stretch: 125%;
+  font-size: clamp(2rem, 5vw, 4.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  transition: color 0.2s ease;
+}
+
+.case-next:hover .case-next-name {
+  color: var(--photon);
+}
+
+@media (max-width: 760px) {
+  .case {
+    padding-top: 96px;
+  }
+
+  .case-section {
+    grid-template-columns: 1fr;
+  }
+
+  .case-shots {
+    padding-right: 0;
+    margin-bottom: 120px;
+  }
+
+  .case-phone {
+    width: 36%;
+    right: 4%;
+    bottom: -22%;
+    border-width: 4px;
+    border-radius: 18px;
+  }
+
 }
 
 /* --------------------------------------------------------------------------

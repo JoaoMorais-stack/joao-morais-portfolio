@@ -1,4 +1,5 @@
 import type { Dictionary, Locale, Project } from "@/content/site";
+import { CASE_UI } from "@/content/cases";
 
 // Vitrine principal: a tela real do projeto em uma superfície 3D, iluminada
 // por trás pela singularidade, com a versão mobile flutuando à frente.
@@ -56,9 +57,14 @@ export default function Featured({ project, t, lang }: { project: Project; t: Di
           ))}
         </ul>
         <p className="featured-note">{project.note[lang]}</p>
-        <a className="link-arrow" href={project.repo} target="_blank" rel="noopener noreferrer">
-          {t.work.repo}
-        </a>
+        <div className="featured-links">
+          <a className="btn btn-primary" href={`/${lang}/cases/${project.slug}/`}>
+            <span>{CASE_UI[lang].viewCase}</span>
+          </a>
+          <a className="link-arrow" href={project.repo} target="_blank" rel="noopener noreferrer">
+            {t.work.repo}
+          </a>
+        </div>
       </div>
     </article>
   );

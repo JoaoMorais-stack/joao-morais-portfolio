@@ -52,8 +52,8 @@ export const PROJECTS: Project[] = [
     stack: ["Python", "SQLite", "HTTP local", "unittest"],
     kind: { pt: "Automação de processos", en: "Process automation" },
     summary: {
-      pt: "Versão pública de uma automação que fiz para a rotina de nutrição clínica do hospital onde trabalho. Ela organiza os casos por prioridade, registra cada execução e gera um relatório.",
-      en: "Public version of an automation I built for the clinical nutrition routine at the hospital where I work. It sorts cases by priority, logs every run and generates a report.",
+      pt: "Demonstração pública do tipo de automação que faço no hospital onde trabalho. Organiza casos de nutrição fictícios por prioridade, registra cada execução e gera um relatório.",
+      en: "Public demo of the kind of automation I build at the hospital where I work. It sorts fictional nutrition cases by priority, logs every run and generates a report.",
     },
     note: {
       pt: "Casos fictícios. Não há dado de paciente.",

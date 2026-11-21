@@ -51,6 +51,43 @@ test.describe("conteúdo e SEO", () => {
   });
 });
 
+test.describe("páginas de case", () => {
+  const slugs = ["ebinex", "clinical", "workforce", "shift", "student"];
+  for (const lang of ["pt", "en"] as const) {
+    test(`os 5 cases em /${lang}/ abrem sem erro e sem rolagem lateral no celular`, async ({ page }) => {
+      const errors = collectErrors(page);
+      await page.setViewportSize({ width: 375, height: 812 });
+      for (const slug of slugs) {
+        await page.goto(`/${lang}/cases/${slug}/`);
+        await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+        await expect(page.locator(".case-facts")).toContainText(lang === "pt" ? "testes automatizados" : "automated tests");
+        await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", new RegExp(`/${lang}/cases/${slug}/$`));
+        const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+        expect(overflow, slug).toBeLessThanOrEqual(0);
+      }
+      expect(errors).toEqual([]);
+    });
+  }
+
+  test("a vitrine leva ao case e o case volta para os projetos", async ({ page }) => {
+    await page.goto("/pt/");
+    await page.locator(".featured").getByRole("link", { name: "Ver o case" }).click();
+    await expect(page).toHaveURL(/\/pt\/cases\/ebinex\/$/);
+    await expect(page.getByRole("heading", { level: 1, name: "Ebinex" })).toBeVisible();
+    await page.getByRole("link", { name: "Próximo projeto" }).click();
+    await expect(page).toHaveURL(/\/pt\/cases\/clinical\/$/);
+    await page.getByRole("link", { name: "Voltar aos projetos" }).click();
+    await expect(page).toHaveURL(/\/pt\/#projetos$/);
+  });
+
+  test("a troca de idioma no case mantém o mesmo projeto", async ({ page }) => {
+    await page.goto("/pt/cases/shift/");
+    await page.getByRole("link", { name: "Read in English" }).click();
+    await expect(page).toHaveURL(/\/en\/cases\/shift\/$/);
+    await expect(page.getByRole("heading", { level: 2, name: "The problem" })).toBeVisible();
+  });
+});
+
 test.describe("segurança ofensiva", () => {
   test("a seção mostra o método em ordem e não declara certificação concluída", async ({ page }) => {
     await page.goto("/pt/");
