@@ -39,10 +39,11 @@ Pendente (aguarda revisão do João antes da fase 5):
 Próximos candidatos (fase 5): seção de segurança ofensiva/competências, captura do Mandarin App,
 cases sanitizados de projetos privados (com autorização), limpeza da documentação para tornar o repositório público.
 
-## 2026-11-21 — Seção de segurança ofensiva (prévia)
+## 2026-11-21 — Seção de segurança ofensiva (em produção)
 
 - Branch `feat/security-section`. Método em 5 etapas copiado do `pentest-labs/methodology` (autorização e escopo,
   mapeamento, hipótese e validação, comunicação do risco, revisão antes de publicar).
 - Plataformas, ferramentas, anotações (Obsidian) e certificações vêm do portfólio antigo; eJPT "em preparação",
   OSCP "objetivo a longo prazo", com aviso "nenhuma concluída". **Confirmar com o João se o status mudou.**
 - O mapa de ataque ganhou uma pose nova (camadas separadas ao lado do método). 19/19 testes.
+- Aprovada pelo João e publicada (main = baa0897). 19/19 testes no endereço de produção.
