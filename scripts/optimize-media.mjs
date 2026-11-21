@@ -33,13 +33,13 @@ if (existsSync(photo)) {
   jobs.push(sharp(photo).resize({ width: 640 }).webp({ quality: 80 }).toFile(resolve(outAbout, "joao-morais-640.webp")));
 }
 
-const fallback = resolve(captures, "singularity-still.png");
+const fallback = resolve(captures, "scene-still.png");
 if (existsSync(fallback)) {
-  jobs.push(sharp(fallback).resize({ width: 1920 }).webp({ quality: 80 }).toFile(resolve(root, "public/media/singularity-still.webp")));
+  jobs.push(sharp(fallback).resize({ width: 1920 }).webp({ quality: 80 }).toFile(resolve(root, "public/media/scene-still.webp")));
 }
-const fallbackMobile = resolve(captures, "singularity-still-mobile.png");
+const fallbackMobile = resolve(captures, "scene-still-mobile.png");
 if (existsSync(fallbackMobile)) {
-  jobs.push(sharp(fallbackMobile).resize({ width: 860 }).webp({ quality: 80 }).toFile(resolve(root, "public/media/singularity-still-mobile.webp")));
+  jobs.push(sharp(fallbackMobile).resize({ width: 860 }).webp({ quality: 80 }).toFile(resolve(root, "public/media/scene-still-mobile.webp")));
 }
 
 const results = await Promise.all(jobs);

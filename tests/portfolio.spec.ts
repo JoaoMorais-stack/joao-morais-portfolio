@@ -17,7 +17,7 @@ test.describe("conteúdo e SEO", () => {
       await expect(page.getByRole("heading", { level: 1, name: "João Morais" })).toBeVisible();
       await expect(page).toHaveTitle(/João Morais/);
       await expect(page.locator('meta[name="description"]')).toHaveAttribute("content", /.{60,}/);
-      await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /og-singularity\.jpg$/);
+      await expect(page.locator('meta[property="og:image"]')).toHaveAttribute("content", /og-scene\.jpg$/);
       await expect(page.locator('link[rel="alternate"][hreflang="en"]')).toHaveCount(1);
       await expect(page.locator('script[type="application/ld+json"]')).toHaveCount(1);
       await page.waitForTimeout(1500);

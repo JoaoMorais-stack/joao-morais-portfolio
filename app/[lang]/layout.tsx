@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
       description: t.description,
       locale: lang === "pt" ? "pt_BR" : "en_US",
       url: `/${lang}/`,
-      images: [{ url: "/media/og-singularity.jpg", width: 1200, height: 630, alt: t.title }],
+      images: [{ url: "/media/og-scene.jpg", width: 1200, height: 630, alt: t.title }],
     },
     twitter: { card: "summary_large_image", title: t.title, description: t.description },
     authors: [{ name: "João Morais", url: "https://github.com/JoaoMorais-stack" }],

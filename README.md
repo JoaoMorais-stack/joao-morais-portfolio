@@ -31,7 +31,7 @@ Parâmetros úteis na URL: `?nowebgl` força o fallback estático; `?capture` mo
 | `app/[lang]/` | Páginas `/pt/` e `/en/`, metadados, Open Graph, hreflang |
 | `app/(root)/` | `/` redireciona pelo idioma do navegador |
 | `content/site.ts` | Todo o texto e a lista de projetos (edite aqui) |
-| `lib/singularity/` | Shader WebGL2 próprio, renderizador com qualidade adaptativa, poses de câmera |
+| `lib/attackmap/` | Cena 3D do mapa de ataque (Three.js), poses de câmera ligadas ao scroll |
 | `components/hero/` | Hero (servidor) e palco WebGL (cliente, carregado sob demanda) |
 | `components/work/` | Vitrine 3D do projeto em destaque e galeria em faixas |
 | `components/site/` | Cabeçalho, introdução, sobre/contato, diretor de scroll (GSAP) |
@@ -53,8 +53,8 @@ Parâmetros úteis na URL: `?nowebgl` força o fallback estático; `?capture` mo
 Fontes via `next/font` (embutidas no build, sem chamada externa em produção):
 Archivo (eixo de largura) e Instrument Serif — ambas SIL OFL.
 
-Sem Three.js nem Tailwind: a cena é um único shader de tela cheia em WebGL2 puro, e o CSS
-é escrito à mão com tokens. Menos peso e controle total.
+A cena do hero ("mapa de ataque") usa Three.js 0.187 (MIT), carregado sob demanda depois da
+primeira pintura. Sem Tailwind: o CSS é escrito à mão com tokens.
 
 ## Hospedagem
 

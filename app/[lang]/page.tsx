@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { DICT, PROJECTS, isLocale } from "@/content/site";
 import SiteHeader from "@/components/site/SiteHeader";
-import SingularityStage from "@/components/hero/SingularityStage";
+import SceneStage from "@/components/hero/SceneStage";
 import Hero from "@/components/hero/Hero";
 import Intro from "@/components/site/Intro";
 import Featured from "@/components/work/Featured";
@@ -30,7 +30,7 @@ export default async function Page({ params }: { params: Promise<{ lang: string 
         {t.skip}
       </a>
       <SiteHeader t={t} lang={lang} />
-      <SingularityStage inclLabel={t.hero.incl} distLabel={t.hero.dist} note={t.hero.renderNote} />
+      <SceneStage map={t.hero.map} />
       <main id="conteudo">
         <Hero t={t} />
         <Intro t={t} />

@@ -13,6 +13,7 @@
   --ivory-faint: rgba(236, 230, 218, 0.14);
   --photon: #7d96ff;
   --photon-glow: rgba(110, 139, 255, 0.45);
+  --finding: #ff5a4f;
 
   --font-sans: var(--font-archivo), "Archivo", system-ui, sans-serif;
   --font-serif: var(--font-serif), "Instrument Serif", Georgia, serif;
@@ -186,8 +187,7 @@ a {
   inset: 0;
   z-index: 0;
   background:
-    radial-gradient(60% 18% at 54% 50%, rgba(236, 230, 218, 0.16), transparent 70%),
-    radial-gradient(12% 20% at 54% 50%, #000 60%, transparent 61%),
+    radial-gradient(40% 45% at 52% 48%, rgba(236, 230, 218, 0.07), transparent 70%),
     var(--space);
   pointer-events: none;
 }
@@ -242,27 +242,101 @@ a {
   animation: fade-in 1s 1.2s both ease;
 }
 
-.hud-values {
-  margin-top: 6px !important;
-  display: flex;
-  justify-content: flex-end;
-  gap: 6px 10px;
-  flex-wrap: wrap;
+.hud-status {
+  margin-top: 8px !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   color: var(--ivory);
-}
-
-.hud-values span:nth-child(odd) {
-  color: var(--ivory-dim);
-}
-
-.hud-num {
   font-variant-numeric: tabular-nums;
-  min-width: 4.6ch;
-  text-align: left;
 }
 
-.stage[data-mode="static"] .hud-values {
+.hud-status::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ivory-dim);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hud-status[data-phase="scan"]::before,
+.hud-status[data-phase="fix"]::before {
+  background: var(--photon);
+  box-shadow: 0 0 10px var(--photon-glow);
+}
+
+.hud-status[data-phase="finding"]::before {
+  background: var(--finding);
+  box-shadow: 0 0 10px rgba(255, 90, 79, 0.5);
+}
+
+/* rótulos projetados da cena 3D */
+.map-labels {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.map-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  translate: -100% -50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-right: 6px;
+  font-size: 0.74rem;
+  color: var(--ivory-dim);
+  white-space: nowrap;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.map-label::after {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.map-label-right {
+  translate: 0 -50%;
+  flex-direction: row-reverse;
+  padding: 0 0 0 6px;
+}
+
+.map-request {
+  translate: -50% -150%;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid var(--finding);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.78);
+  color: var(--ivory);
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  transition: border-color 0.3s ease;
+}
+
+.map-request::after {
   display: none;
+}
+
+.map-request b {
+  color: var(--finding);
+  font-weight: 700;
+}
+
+.map-request[data-state="fixed"] {
+  border-color: var(--photon);
+}
+
+.map-request[data-state="fixed"] b {
+  color: var(--photon);
 }
 
 /* modo de captura do fallback: só a cena, sem interface */
@@ -302,7 +376,7 @@ main {
   text-transform: uppercase;
   line-height: 0.8;
   letter-spacing: -0.035em;
-  font-size: clamp(4.2rem, 13.4vw, 16rem);
+  font-size: clamp(4.2rem, 12.2vw, 15rem);
 }
 
 .hero-word {
@@ -1247,8 +1321,9 @@ main {
     top: calc(72px + 4svh);
   }
 
+  /* celular: nome empilhado no topo, sistema no meio, texto embaixo */
   .hero-last {
-    top: 58svh;
+    top: calc(72px + 4svh + 17vw);
   }
 
   .hero-copy {
@@ -1279,6 +1354,11 @@ main {
   }
 
   .hud {
+    display: none;
+  }
+
+  /* rótulos das camadas ficariam cortados na borda; o pedido HTTP continua */
+  .map-label:not(.map-request) {
     display: none;
   }
 

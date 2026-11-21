@@ -119,10 +119,13 @@ export type Dictionary = {
     lede: string;
     ctaWork: string;
     ctaContact: string;
-    renderNote: string;
-    incl: string;
-    dist: string;
     scroll: string;
+    map: {
+      note: string;
+      request: string;
+      layers: { ui: string; api: string; db: string; infra: string; auto: string };
+      phases: { build: string; scan: string; finding: string; fix: string; calm: string };
+    };
   };
   intro: {
     statement: string;
@@ -175,10 +178,19 @@ export const DICT: Record<Locale, Dictionary> = {
       lede: "Faço sistemas web, aplicativos e automações. Estudo pentest em laboratórios autorizados. Moro em São Paulo.",
       ctaWork: "Ver projetos",
       ctaContact: "Contato",
-      renderNote: "Cena 3D renderizada em tempo real no navegador.",
-      incl: "Inclinação",
-      dist: "Distância",
       scroll: "Role para ver mais",
+      map: {
+        note: "Ilustração de como eu construo e testo um sistema.",
+        request: "GET /api/contas/1042",
+        layers: { ui: "Interface", api: "API", db: "Banco de dados", infra: "Servidor", auto: "Automações" },
+        phases: {
+          build: "Montando o sistema",
+          scan: "Varrendo a camada {layer}",
+          finding: "Falha: a API entrega a conta de outro usuário",
+          fix: "Corrigido: a mesma requisição agora é negada",
+          calm: "Sistema em funcionamento",
+        },
+      },
     },
     intro: {
       statement:
@@ -249,10 +261,19 @@ export const DICT: Record<Locale, Dictionary> = {
       lede: "I build web systems, apps and automations. I study pentesting in authorized labs. I live in São Paulo, Brazil.",
       ctaWork: "View projects",
       ctaContact: "Contact",
-      renderNote: "3D scene rendered live in the browser.",
-      incl: "Inclination",
-      dist: "Distance",
       scroll: "Scroll for more",
+      map: {
+        note: "An illustration of how I build and test a system.",
+        request: "GET /api/accounts/1042",
+        layers: { ui: "Interface", api: "API", db: "Database", infra: "Server", auto: "Automations" },
+        phases: {
+          build: "Building the system",
+          scan: "Scanning the {layer} layer",
+          finding: "Flaw: the API returns another user's account",
+          fix: "Fixed: the same request is now denied",
+          calm: "System running",
+        },
+      },
     },
     intro: {
       statement:
