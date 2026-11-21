@@ -32,7 +32,7 @@ Pendente (aguarda revisão do João antes da fase 5):
 
 ## 2026-11-21 — Hero "mapa de ataque" em produção
 
-- Aprovado pelo João na prévia e publicado (main = fefd4bc). Deploy automático GitHub → Vercel funcionando.
+- Aprovado pelo João na prévia e publicado (main = 7e2eefe). Deploy automático GitHub → Vercel funcionando.
 - Verificado em produção: 18/18 testes, cena ao vivo sem erros de console, fallback e OG novos servidos.
 - Textos reescritos em primeira pessoa (sem slogans) também estão no ar.
 
@@ -46,7 +46,7 @@ cases sanitizados de projetos privados (com autorização), limpeza da documenta
 - Plataformas, ferramentas, anotações (Obsidian) e certificações vêm do portfólio antigo; eJPT "em preparação",
   OSCP "objetivo a longo prazo", com aviso "nenhuma concluída". **Confirmar com o João se o status mudou.**
 - O mapa de ataque ganhou uma pose nova (camadas separadas ao lado do método). 19/19 testes.
-- Aprovada pelo João e publicada (main = baa0897). 19/19 testes no endereço de produção.
+- Aprovada pelo João e publicada (main = 98589c3). 19/19 testes no endereço de produção.
 
 ## 2026-11-21 — Páginas de case (em produção)
 
@@ -56,4 +56,12 @@ cases sanitizados de projetos privados (com autorização), limpeza da documenta
   a demo usa casos de nutrição fictícios (não "a rotina de nutrição do hospital").
 - Logo trocado para três camadas empilhadas (coerente com o mapa de ataque). Mandarin App descartado pelo João (incompleto).
 - 23/23 testes.
-- Aprovadas pelo João e publicadas (main = 6c31b61). 23/23 testes em produção; as 10 rotas respondem 200.
+- Aprovadas pelo João e publicadas (main = 70e3bdf). 23/23 testes em produção; as 10 rotas respondem 200.
+
+## 2026-11-21 — Repositório público
+
+- README reescrito para visitantes; nomes de repositórios privados e caminho local removidos da documentação.
+- Histórico reescrito (git filter-branch) com autorização do João, só nessas linhas; árvore final idêntica.
+  Branches de recurso já incorporados foram apagados. Cópia do histórico antigo em
+  `_audit_runtime/historico-antes-da-limpeza-2026-11-21.bundle` (fora do Git).
+- Repositório tornado público, com o site como homepage. Vercel seguiu publicando; 23/23 testes em produção.
