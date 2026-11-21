@@ -25,7 +25,7 @@ export default function SqueezeGallery({ projects, t, lang }: { projects: Projec
   };
 
   return (
-    <div className="gallery">
+    <div className="gallery" data-opaque>
       <div className="gallery-head">
         <h3 className="gallery-title">{t.work.galleryHeading}</h3>
         <p className="gallery-hint">{t.work.galleryHint}</p>

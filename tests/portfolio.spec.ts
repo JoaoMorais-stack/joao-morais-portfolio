@@ -111,10 +111,10 @@ test.describe("cena WebGL e alternativas", () => {
   test("a renderização pausa quando a cena sai de vista e volta no contato", async ({ page }) => {
     await page.goto("/pt/");
     await expect(page.locator(".stage")).toHaveAttribute("data-mode", "live", { timeout: 15_000 });
-    await page.locator("#sobre").scrollIntoViewIfNeeded();
+    // a seção "sobre" é opaca e mais alta que a tela: com o topo dela no alto, a cena fica coberta
     await page.evaluate(() => {
       const r = document.querySelector("#sobre")!.getBoundingClientRect();
-      window.scrollTo(0, r.top + window.scrollY + 40);
+      window.scrollTo(0, r.top + window.scrollY + 10);
     });
     await expect(page.locator(".stage-canvas")).toHaveAttribute("data-active", "false");
     await page.locator("#contato").scrollIntoViewIfNeeded();

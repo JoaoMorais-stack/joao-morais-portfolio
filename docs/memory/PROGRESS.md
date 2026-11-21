@@ -65,3 +65,17 @@ cases sanitizados de projetos privados (com autorização), limpeza da documenta
   Branches de recurso já incorporados foram apagados. Cópia do histórico antigo em
   `_audit_runtime/historico-antes-da-limpeza-2026-11-21.bundle` (fora do Git).
 - Repositório tornado público, com o site como homepage. Vercel seguiu publicando; 23/23 testes em produção.
+
+## 2026-11-21 — Revisão de qualidade (prévia)
+
+- Branch `feat/quality-pass`. axe-core (WCAG 2.0/2.1/2.2 A e AA + boas práticas) em 4 páginas × desktop/celular: 0 violações.
+  Corrigido: nome acessível do link de idioma ("EN (Read in English)"), bloco de comandos que rolava sem foco,
+  contraste da frase da introdução (agora acende de #85817a), rótulo da navegação, âncoras sob o cabeçalho fixo,
+  links ocultos pelo parallax saem do foco (autoAlpha).
+- Desempenho: cena 3D e GSAP carregam depois do `load`; em telas de toque, só na primeira interação ou após 5 s
+  (a imagem estática é a mesma cena). Telas de celular com variante 320w. Pausa da cena agora por cobertura de seção opaca
+  (antes, com a seção de segurança, ela nunca pausava).
+- Lighthouse local (servidor com brotli): celular 82–91 de desempenho (antes 77 em produção), acessibilidade 100,
+  boas práticas 100, SEO 100; desktop 97–100. LCP de laboratório no celular segue ~3,1–3,3 s (hidratação do React
+  na CPU simulada); fontes e animação do nome foram testadas e descartadas como causa.
+- Segurança: npm audit 0, OSV-Scanner 0 (74 pacotes), Semgrep 0 alertas (30 arquivos). 31/31 testes.

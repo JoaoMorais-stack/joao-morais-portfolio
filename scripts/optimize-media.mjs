@@ -24,6 +24,7 @@ for (const app of apps) {
   }
   if (existsSync(mobile)) {
     jobs.push(sharp(mobile).resize({ width: 520 }).webp({ quality: 80 }).toFile(resolve(outProjects, `${app}-mobile-520.webp`)));
+    jobs.push(sharp(mobile).resize({ width: 320 }).webp({ quality: 78 }).toFile(resolve(outProjects, `${app}-mobile-320.webp`)));
   }
 }
 
@@ -39,7 +40,7 @@ if (existsSync(fallback)) {
 }
 const fallbackMobile = resolve(captures, "scene-still-mobile.png");
 if (existsSync(fallbackMobile)) {
-  jobs.push(sharp(fallbackMobile).resize({ width: 860 }).webp({ quality: 80 }).toFile(resolve(root, "public/media/scene-still-mobile.webp")));
+  jobs.push(sharp(fallbackMobile).resize({ width: 720 }).webp({ quality: 74 }).toFile(resolve(root, "public/media/scene-still-mobile.webp")));
 }
 
 const results = await Promise.all(jobs);

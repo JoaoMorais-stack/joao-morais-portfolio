@@ -34,6 +34,8 @@ export default function Featured({ project, t, lang }: { project: Project; t: Di
           <figure className="device-phone">
             <img
               src={`${base}-mobile-520.webp`}
+              srcSet={`${base}-mobile-320.webp 320w, ${base}-mobile-520.webp 520w`}
+              sizes="(max-width: 760px) 34vw, 260px"
               width={520}
               height={1125}
               loading="lazy"

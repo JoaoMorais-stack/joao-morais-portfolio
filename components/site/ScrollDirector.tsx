@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { sceneBus } from "@/lib/sceneBus";
+import { afterInteractionOnTouch } from "@/lib/afterLoad";
 
 /**
  * Liga o scroll nativo (sem sequestro de rolagem) à câmera da cena e às
@@ -14,6 +15,9 @@ export default function ScrollDirector() {
     let cancelled = false;
 
     (async () => {
+      // no celular, só quando a pessoa começa a interagir: os efeitos dependem do scroll
+      await afterInteractionOnTouch();
+      if (cancelled) return;
       const [{ gsap }, { ScrollTrigger }] = await Promise.all([import("gsap"), import("gsap/ScrollTrigger")]);
       if (cancelled) return;
       gsap.registerPlugin(ScrollTrigger);
@@ -78,17 +82,19 @@ export default function ScrollDirector() {
           scrollTrigger: { trigger: "#inicio", start: "top top", end: "bottom top", scrub: 0.6 },
         });
         heroTl
-          .to("[data-parallax='first']", { xPercent: -14, yPercent: -40, opacity: 0.0, ease: "none" }, 0)
-          .to("[data-parallax='last']", { xPercent: 12, yPercent: 50, opacity: 0.0, ease: "none" }, 0)
-          .to("[data-parallax='copy']", { y: -60, opacity: 0, ease: "none" }, 0)
+          .to("[data-parallax='first']", { xPercent: -14, yPercent: -40, autoAlpha: 0, ease: "none" }, 0)
+          .to("[data-parallax='last']", { xPercent: 12, yPercent: 50, autoAlpha: 0, ease: "none" }, 0)
+          // autoAlpha esconde também do foco do teclado quando o bloco some
+          .to("[data-parallax='copy']", { y: -60, autoAlpha: 0, ease: "none" }, 0)
           .to(".hud", { opacity: 0, ease: "none" }, 0);
 
-        // a frase da introdução acende palavra por palavra, controlada pelo scroll
+        // a frase da introdução acende palavra por palavra, controlada pelo scroll.
+        // Parte de um cinza que já passa no contraste mínimo (5:1), não de quase invisível.
         gsap.fromTo(
           "[data-reveal-words] .word",
-          { opacity: 0.16 },
+          { color: "#85817a" },
           {
-            opacity: 1,
+            color: "#ece6da",
             ease: "none",
             stagger: 0.08,
             scrollTrigger: { trigger: "#intro", start: "top 75%", end: "center 45%", scrub: 0.4 },

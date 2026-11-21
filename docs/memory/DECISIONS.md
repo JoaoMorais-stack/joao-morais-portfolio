@@ -14,3 +14,5 @@
 12. **Buraco negro será substituído (2026-11-20):** o João achou bonito e imersivo, mas sem relação com pentest e programação. Fica como referência de nível visual; o próximo hero precisa representar o trabalho dele.
 13. **Fluxo de publicação:** trabalho na branch `feat/*` gera link de prévia na Vercel; aprovado, vai para `main` (produção, deploy automático).
 14. **Hero "mapa de ataque" (2026-11-21, escolhido pelo João):** arquitetura de sistema em planta técnica 3D com varredura, achado (IDOR ilustrativo: `GET /api/contas/1042 → 200`) e correção (`→ 403`). Three.js 0.187 (MIT), carregado sob demanda; ~120 FPS medidos na GPU integrada. Código do buraco negro removido (fica no histórico do Git).
+15. **Carregamento adiado no celular (2026-11-21):** em `pointer: coarse`, Three.js e GSAP só carregam na primeira interação ou após 5 s. Motivo: o pacote 3D custava ~4 s de CPU simulada e derrubava o desempenho; a imagem estática é a mesma cena, então não há salto visual.
+16. **Pausa por cobertura:** a cena pausa quando uma seção marcada `data-opaque` (galeria, "sobre") cobre a tela inteira, em vez de depender de seções `data-scene` visíveis.

@@ -42,7 +42,7 @@ export default function SiteHeader({ t, lang, base = "", switchHref }: Props) {
         <span className="mark-text">João Morais</span>
       </a>
 
-      <nav className="nav" aria-label={t.nav.menu}>
+      <nav className="nav" aria-label={lang === "pt" ? "Navegação principal" : "Main navigation"}>
         <ul id="site-nav" className="nav-list">
           {links.map((l) => (
             <li key={l.href}>
@@ -52,8 +52,9 @@ export default function SiteHeader({ t, lang, base = "", switchHref }: Props) {
             </li>
           ))}
           <li className="nav-lang">
-            <a href={switchHref ?? `/${other}/`} hrefLang={other === "pt" ? "pt-BR" : "en"} lang={other === "pt" ? "pt-BR" : "en"} aria-label={t.nav.switchLabel}>
+            <a href={switchHref ?? `/${other}/`} hrefLang={other === "pt" ? "pt-BR" : "en"} lang={other === "pt" ? "pt-BR" : "en"}>
               {t.nav.switchTo}
+              <span className="sr-only"> ({t.nav.switchLabel})</span>
             </a>
           </li>
         </ul>

@@ -3,6 +3,7 @@
 import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
 import { extname, join, normalize, resolve, sep } from "node:path";
+import { brotliCompressSync, constants as zlibConstants, gzipSync } from "node:zlib";
 
 const root = resolve(import.meta.dirname, "..", "out");
 const port = Number(process.env.PORT ?? 3210);
@@ -37,8 +38,20 @@ createServer(async (req, res) => {
   const file = await resolveFile(req.url ?? "/");
   try {
     if (!file) throw new Error("404");
-    const body = await readFile(file);
+    let body = await readFile(file);
+    // comprime texto como uma hospedagem real (deixa medições de desempenho comparáveis)
+    const accept = String(req.headers["accept-encoding"] ?? "");
+    const compressible = /\.(html|js|css|json|txt|svg)$/.test(file);
+    let encoding;
+    if (compressible && accept.includes("br")) {
+      body = brotliCompressSync(body, { params: { [zlibConstants.BROTLI_PARAM_QUALITY]: 5 } });
+      encoding = "br";
+    } else if (compressible && accept.includes("gzip")) {
+      body = gzipSync(body);
+      encoding = "gzip";
+    }
     res.writeHead(200, {
+      ...(encoding ? { "content-encoding": encoding, vary: "accept-encoding" } : {}),
       "content-type": types[extname(file)] ?? "application/octet-stream",
       "cache-control": file.includes(`${sep}_next${sep}`) ? "public, max-age=31536000, immutable" : "no-cache",
       "x-content-type-options": "nosniff",

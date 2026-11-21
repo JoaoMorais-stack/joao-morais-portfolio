@@ -2,7 +2,7 @@ import { LINKS, type Dictionary } from "@/content/site";
 
 export function About({ t }: { t: Dictionary }) {
   return (
-    <section className="about" id="sobre" aria-labelledby="about-title">
+    <section className="about" id="sobre" data-opaque aria-labelledby="about-title">
       <figure className="about-photo">
         <img
           src="/media/about/joao-morais-1100.webp"

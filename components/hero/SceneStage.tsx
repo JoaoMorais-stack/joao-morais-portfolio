@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { sceneBus } from "@/lib/sceneBus";
+import { afterInteractionOnTouch } from "@/lib/afterLoad";
 import type { Dictionary } from "@/content/site";
 
 type Props = { map: Dictionary["hero"]["map"] };
@@ -80,18 +81,28 @@ export default function SceneStage({ map }: Props) {
       };
       if (fine && !reduced) window.addEventListener("pointermove", onMove, { passive: true });
 
-      // suspende a renderização quando nenhuma seção que mostra a cena está visível
-      const visible = new Set<Element>();
+      // suspende a renderização quando uma seção opaca cobre a tela inteira
+      // (galeria, "sobre") ou quando a aba fica em segundo plano
+      const opaque = Array.from(document.querySelectorAll<HTMLElement>("[data-opaque]"));
       let pageVisible = !document.hidden;
-      const sync = () => scene.setActive(pageVisible && visible.size > 0);
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((en) => (en.isIntersecting ? visible.add(en.target) : visible.delete(en.target)));
-          sync();
-        },
-        { rootMargin: "10% 0px" },
-      );
-      document.querySelectorAll("[data-scene]").forEach((el) => io.observe(el));
+      let pending = false;
+      const sync = () => {
+        pending = false;
+        const vh = window.innerHeight;
+        const covered = opaque.some((el) => {
+          const r = el.getBoundingClientRect();
+          return r.top <= 0 && r.bottom >= vh;
+        });
+        scene.setActive(pageVisible && !covered);
+      };
+      const onScroll = () => {
+        if (pending) return;
+        pending = true;
+        requestAnimationFrame(sync);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("resize", onScroll, { passive: true });
+      sync();
       const onVis = () => {
         pageVisible = !document.hidden;
         sync();
@@ -103,17 +114,16 @@ export default function SceneStage({ map }: Props) {
         mobileQuery.removeEventListener("change", onMq);
         window.removeEventListener("pointermove", onMove);
         document.removeEventListener("visibilitychange", onVis);
-        io.disconnect();
+        window.removeEventListener("scroll", onScroll);
+        window.removeEventListener("resize", onScroll);
         scene.destroy();
       };
     };
 
-    const idle = (cb: () => void) => {
-      const w = window as Window & { requestIdleCallback?: Window["requestIdleCallback"] };
-      if (typeof w.requestIdleCallback === "function") w.requestIdleCallback(cb, { timeout: 600 });
-      else setTimeout(cb, 120);
-    };
-    idle(() => void start());
+    // a cena só carrega depois da página; até lá a imagem estática idêntica fica no lugar
+    void afterInteractionOnTouch().then(() => {
+      if (!disposed) void start();
+    });
 
     return () => {
       disposed = true;
