@@ -29,3 +29,12 @@ Pendente (aguarda revisão do João antes da fase 5):
 - Verificado no endereço publicado: 18/18 testes Playwright (`BASE_URL=... npx playwright test`),
   cabeçalhos de segurança, canonical/OG com o domínio de produção, cena WebGL ao vivo sem erros de console.
 - Corrigido após o deploy: sobra horizontal de 7–11 px do celular flutuante em 768 px.
+
+## 2026-11-21 — Hero "mapa de ataque" em produção
+
+- Aprovado pelo João na prévia e publicado (main = fefd4bc). Deploy automático GitHub → Vercel funcionando.
+- Verificado em produção: 18/18 testes, cena ao vivo sem erros de console, fallback e OG novos servidos.
+- Textos reescritos em primeira pessoa (sem slogans) também estão no ar.
+
+Próximos candidatos (fase 5): seção de segurança ofensiva/competências, captura do Mandarin App,
+cases sanitizados de projetos privados (com autorização), limpeza da documentação para tornar o repositório público.
