@@ -48,7 +48,7 @@ cases sanitizados de projetos privados (com autorização), limpeza da documenta
 - O mapa de ataque ganhou uma pose nova (camadas separadas ao lado do método). 19/19 testes.
 - Aprovada pelo João e publicada (main = baa0897). 19/19 testes no endereço de produção.
 
-## 2026-11-21 — Páginas de case (prévia)
+## 2026-11-21 — Páginas de case (em produção)
 
 - Branch `feat/case-pages`. Rota estática `/[lang]/cases/[slug]/` para os 5 projetos (10 páginas).
 - Conteúdo só de README/código: problema, recursos, arquitetura (fluxo), testes e segurança, limites, como rodar.
@@ -56,3 +56,4 @@ cases sanitizados de projetos privados (com autorização), limpeza da documenta
   a demo usa casos de nutrição fictícios (não "a rotina de nutrição do hospital").
 - Logo trocado para três camadas empilhadas (coerente com o mapa de ataque). Mandarin App descartado pelo João (incompleto).
 - 23/23 testes.
+- Aprovadas pelo João e publicadas (main = 6c31b61). 23/23 testes em produção; as 10 rotas respondem 200.
