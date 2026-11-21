@@ -66,7 +66,7 @@ cases sanitizados de projetos privados (com autorização), limpeza da documenta
   `_audit_runtime/historico-antes-da-limpeza-2026-11-21.bundle` (fora do Git).
 - Repositório tornado público, com o site como homepage. Vercel seguiu publicando; 23/23 testes em produção.
 
-## 2026-11-21 — Revisão de qualidade (prévia)
+## 2026-11-21 — Revisão de qualidade (em produção)
 
 - Branch `feat/quality-pass`. axe-core (WCAG 2.0/2.1/2.2 A e AA + boas práticas) em 4 páginas × desktop/celular: 0 violações.
   Corrigido: nome acessível do link de idioma ("EN (Read in English)"), bloco de comandos que rolava sem foco,
@@ -79,3 +79,5 @@ cases sanitizados de projetos privados (com autorização), limpeza da documenta
   boas práticas 100, SEO 100; desktop 97–100. LCP de laboratório no celular segue ~3,1–3,3 s (hidratação do React
   na CPU simulada); fontes e animação do nome foram testadas e descartadas como causa.
 - Segurança: npm audit 0, OSV-Scanner 0 (74 pacotes), Semgrep 0 alertas (30 arquivos). 31/31 testes.
+- Publicada (main = 0307406). Produção: 31/31 testes; Lighthouse celular 80–86 (antes 77), TBT 370–620 ms (antes 710),
+  LCP 2,8 s, 388 KB (antes 611 KB), acessibilidade 100; desktop 98, acessibilidade 100.
