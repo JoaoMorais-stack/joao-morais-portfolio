@@ -1,11 +1,25 @@
-# João Morais — portfólio "Singularity"
+# João Morais — portfólio
 
-Portfólio pessoal bilíngue (PT/EN) de João Morais: cibersegurança, software e automação.
-Protótipo da fase 4 (hero cinematográfico + primeira vitrine de projetos), aguardando revisão.
+Site pessoal de João Morais, desenvolvedor de software e pentester em formação (São Paulo, Brasil).
+Bilíngue (português e inglês), com uma cena 3D no início que mostra como eu construo e testo um sistema.
 
-## Rodar localmente
+**No ar:** https://joao-morais-portfolio-ecru.vercel.app
 
-```powershell
+## O que tem aqui
+
+- **Hero "mapa de ataque":** a arquitetura de um sistema (interface, API, banco, servidor e automações) desenhada
+  como planta técnica em Three.js. Uma varredura percorre as camadas, um caminho de ataque aparece em vermelho
+  (`GET /api/contas/1042 → 200`) e é corrigido em azul (`→ 403`). É uma ilustração, não um caso real.
+- **Projetos:** vitrine e galeria com telas capturadas das aplicações rodando localmente, e uma página de case
+  para cada projeto (problema, arquitetura, testes, segurança, limites e como rodar).
+- **Segurança ofensiva:** o método que sigo nos laboratórios, onde pratico e o status das certificações.
+- **Sobre e contato.**
+
+## Como rodar
+
+Requer Node.js 20 ou mais novo.
+
+```bash
 npm install
 npm run build      # exportação estática em out/
 npm run serve      # http://127.0.0.1:3210/pt/
@@ -13,52 +27,46 @@ npm run serve      # http://127.0.0.1:3210/pt/
 
 Desenvolvimento com recarga: `npm run dev` (http://localhost:3210/pt/).
 
-## Verificação
+## Testes e verificação
 
-```powershell
+```bash
 npm run typecheck
-npx playwright test                         # 18 testes contra o build servido
-node scripts/visual-check.mjs               # screenshots em 1920/1440/768/430/375
-node scripts/perf-check.mjs                 # FPS, escala interna, peso e CLS
+npx playwright test                              # contra o build local
+BASE_URL=https://... npx playwright test         # contra um endereço publicado
+node scripts/visual-check.mjs                    # capturas em 1920/1440/768/430/375
+node scripts/perf-check.mjs                      # FPS, peso transferido e CLS
 ```
 
-Parâmetros úteis na URL: `?nowebgl` força o fallback estático; `?capture` mostra só a cena.
+Os testes cobrem metadados e SEO, links, a cena 3D e as alternativas sem WebGL e com movimento reduzido,
+ausência de rolagem lateral em cinco larguras, navegação por teclado, menu do celular, troca de idioma e as
+páginas de case. Parâmetros úteis na URL: `?nowebgl` força a imagem estática e `?capture` mostra só a cena.
 
 ## Estrutura
 
 | Caminho | Papel |
 |---|---|
-| `app/[lang]/` | Páginas `/pt/` e `/en/`, metadados, Open Graph, hreflang |
-| `app/(root)/` | `/` redireciona pelo idioma do navegador |
-| `content/site.ts` | Todo o texto e a lista de projetos (edite aqui) |
-| `lib/attackmap/` | Cena 3D do mapa de ataque (Three.js), poses de câmera ligadas ao scroll |
-| `components/hero/` | Hero (servidor) e palco WebGL (cliente, carregado sob demanda) |
-| `components/work/` | Vitrine 3D do projeto em destaque e galeria em faixas |
-| `components/site/` | Cabeçalho, introdução, sobre/contato, diretor de scroll (GSAP) |
-| `scripts/` | Servidor estático local, otimização de mídia, capturas, checagens |
-| `public/media/` | Screenshots reais (WebP), foto, fallback da cena, imagem OG |
-| `docs/` | Referências, auditoria do GitHub, memória do projeto |
+| `content/site.ts` | Todo o texto (PT/EN) e a lista de projetos |
+| `content/cases.ts` | Conteúdo das páginas de case |
+| `app/[lang]/` | Página inicial e cases em `/pt/` e `/en/`, metadados e Open Graph |
+| `lib/attackmap/` | Cena 3D (Three.js) e poses de câmera ligadas ao scroll |
+| `components/` | Seções, vitrine, galeria, cabeçalho e diretor de scroll (GSAP) |
+| `scripts/` | Servidor estático local, mídia, capturas, checagens de qualidade |
+| `public/media/` | Telas dos projetos em WebP, foto, imagem estática da cena e Open Graph |
+| `docs/` | Decisões, referências e registro do projeto |
 
-## Dependências
+## Tecnologia
 
-| Pacote | Versão | Licença | Por quê |
-|---|---|---|---|
-| next | 16.4.6 | MIT | App Router com exportação estática (hospedagem gratuita) |
-| react / react-dom | 19.3.1 | MIT | Base do Next |
-| gsap | 3.15.1 | Standard "no charge" (uso comercial gratuito) | ScrollTrigger: scroll nativo ligado à câmera e às transições |
-| typescript | ~5.9 (dev) | Apache-2.0 | Tipagem |
-| @playwright/test | 1.65.1 (dev) | Apache-2.0 | Testes e inspeção visual (usa o Chrome instalado) |
-| sharp | 0.35.5 (dev) | Apache-2.0 | Conversão das capturas para WebP |
+| Pacote | Licença | Uso |
+|---|---|---|
+| Next.js 16 / React 19 | MIT | Exportação estática, sem servidor |
+| Three.js 0.187 | MIT | Cena do hero, carregada depois da primeira pintura |
+| GSAP 3.15 | Licença padrão gratuita da GSAP | Scroll nativo ligado à câmera e às transições |
+| TypeScript, Playwright, sharp | Apache-2.0 | Tipagem, testes e conversão de imagens |
 
-Fontes via `next/font` (embutidas no build, sem chamada externa em produção):
-Archivo (eixo de largura) e Instrument Serif — ambas SIL OFL.
+Fontes Archivo e Instrument Serif (SIL OFL), embutidas no build. CSS escrito à mão, sem framework.
+Hospedado na Vercel com deploy automático a cada push na `main`; cabeçalhos de segurança em `vercel.json`.
 
-A cena do hero ("mapa de ataque") usa Three.js 0.187 (MIT), carregado sob demanda depois da
-primeira pintura. Sem Tailwind: o CSS é escrito à mão com tokens.
+## Direitos
 
-## Hospedagem
-
-Build 100% estático (`out/`), publicado na Vercel com deploy automático a cada push:
-`main` vai para produção e as outras branches geram links de pré-visualização.
-Cabeçalhos de segurança em `vercel.json`. Rollback: promover um deploy anterior no painel
-da Vercel ou reverter o commit em `main`.
+O código está aqui para leitura e referência. Textos, fotos, capturas dos projetos e a identidade visual
+são de João Morais, com todos os direitos reservados.

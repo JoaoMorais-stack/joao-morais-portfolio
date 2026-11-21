@@ -16,7 +16,7 @@ Todos os commits são de João Morais; nenhum é fork.
 | workforce-management-demo | Python, SQLite, API JSON | Sim, porta 5000 | 7/7 ok | desktop + mobile | Dados fictícios. |
 | shift-schedule-generator | Python, SQLite | Sim, porta 5100 | 8/8 ok | desktop + mobile | Interface em português; registros fictícios. |
 | student-portal-automation-demo | Python stdlib, urllib | Sim, porta 8766, clicado "Run authorized demo" | 6/6 ok | desktop + mobile | Bloqueia alvos não locais no código. |
-| mandarin-learning-app | Expo, React Native, TS, Supabase | **Não executado** | não rodado | nenhuma | Exige `npm install` pesado e Expo; fica para a fase 5. Status do README: desenvolvimento ativo. |
+| mandarin-learning-app | Expo, React Native, TS, Supabase | **Não executado** | não rodado | nenhuma | Fora do portfólio por decisão do João (ainda incompleto). |
 | pentest-labs | Markdown | — | — | — | Só estrutura e templates; README diz que ainda não há write-ups públicos. Não há o que exibir como projeto. |
 
 ## Outros repositórios
