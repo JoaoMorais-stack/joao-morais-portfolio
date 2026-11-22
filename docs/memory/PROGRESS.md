@@ -94,7 +94,7 @@ cases sanitizados de projetos privados (com autorização), limpeza da documenta
 - Atualização: os 5 PRs foram mesclados pelo João no GitHub em 2026-11-22; clones locais sincronizados com `main`.
 
 ## 2026-11-22 — Cases privados: LeadFinder (prévia)
-- Plano aprovado: Audit com telas reais; LeadFinder só com dados fictícios ou só texto; Studio fora; nada alterado nos repositórios privados.
+- Plano aprovado: Audit com telas reais; LeadFinder só com dados fictícios ou só texto; nada alterado nos repositórios privados.
 - LeadFinder: interface React real rodando no Vite, com o backend Tauri substituído no navegador por um mock só com empresas fictícias (sites `.example`, telefones 5555). Nenhum banco aberto — a pasta de dados de dev do João não foi tocada. Mock e script ficam fora do Git (`_audit_runtime/leadfinder-tools/`), porque revelam a estrutura interna do app privado.
 - Projeto pode não ter `repo` (código privado) e ser `desktopOnly` (sem celular); página de case ganha "Outras telas".
 - Testes do case: vitest 9/9 executado hoje; cargo 156/156 vem do registro do próprio projeto (versão 0.4.3) — a compilação local está lenta por causa do antivírus.
