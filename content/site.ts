@@ -131,6 +131,27 @@ export const PROJECTS: Project[] = [
       { id: "opportunities", alt: { pt: "Regras de oportunidade com grau de confiança e quantidade aberta.", en: "Opportunity rules with confidence level and open count." } },
     ],
   },
+  {
+    slug: "audit",
+    name: "MoraisSec Audit",
+    shot: "audit",
+    desktopOnly: true,
+    stack: ["Python", "NiceGUI", "httpx", "SQLite", "Nmap", "ffuf"],
+    kind: { pt: "Plataforma de auditoria de segurança", en: "Security audit platform" },
+    summary: {
+      pt: "App local que uso para pesquisa passiva de domínios em fontes públicas e para auditorias autorizadas com registro de escopo, limite de requisições e evidências. Cruza as versões encontradas com CVEs e gera relatórios em HTML e PDF.",
+      en: "Local app I use for passive domain research on public sources and for authorized audits with a scope record, request limits and evidence. It matches the versions it finds against CVEs and produces HTML and PDF reports.",
+    },
+    note: {
+      pt: "As telas são de um laboratório na minha máquina (127.0.0.1).",
+      en: "The screens come from a lab on my own machine (127.0.0.1).",
+    },
+    extraShots: [
+      { id: "result", alt: { pt: "Resultado de uma auditoria autorizada contra o laboratório local, com ferramentas executadas e cobertura do escopo.", en: "Result of an authorized audit against the local lab, with the tools that ran and scope coverage." } },
+      { id: "cves", alt: { pt: "Correspondências de CVEs com CVSS, EPSS e CISA KEV para as versões do laboratório.", en: "CVE matches with CVSS, EPSS and CISA KEV for the lab's software versions." } },
+      { id: "crossing", alt: { pt: "Tabela de vulnerabilidades conhecidas por produto e versão, com aviso sobre backport.", en: "Known vulnerabilities by product and version, with a note about backports." } },
+    ],
+  },
 ];
 
 export type Dictionary = {

@@ -13,9 +13,9 @@ const outAbout = resolve(root, "public/media/about");
 await mkdir(outProjects, { recursive: true });
 await mkdir(outAbout, { recursive: true });
 
-const apps = ["ebinex", "clinical", "workforce", "shift", "student", "leadfinder"];
+const apps = ["ebinex", "clinical", "workforce", "shift", "student", "leadfinder", "audit"];
 // Telas adicionais das páginas de case (apps sem versão de celular).
-const extras = { leadfinder: ["company", "explore", "opportunities"] };
+const extras = { leadfinder: ["company", "explore", "opportunities"], audit: ["result", "cves", "crossing"] };
 const jobs = [];
 for (const [app, ids] of Object.entries(extras)) {
   for (const id of ids) {

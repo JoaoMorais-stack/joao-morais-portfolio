@@ -101,3 +101,9 @@ cases sanitizados de projetos privados (com autorização), limpeza da documenta
 - Audit: o app recusa domínios reservados (`example.com`) por design; analisar domínio de terceiros exporia dados reais. Pendente decisão do João: usar um domínio dele ou publicar o case só em texto.
 - 33/33 testes (inclui axe na página nova).
 - Publicado em produção em 2026-11-22 (main = c641b7d). 33/33 testes contra a URL de produção; páginas PT/EN 200; imagens conferidas por hash; inspeção visual 1440 e 375 sem erros nem estouro. Pendente: decisão do João sobre o Audit (domínio próprio ou só texto).
+
+## 2026-11-22 — Case do MoraisSec Audit (prévia)
+- O João não tem domínio próprio. Telas usadas: homologação do próprio Audit contra o laboratório local 127.0.0.1:8493 (escopo LAB-M022-001, marcado como demonstração) — publicação autorizada pelo João no chat depois de ver as telas. Nenhum domínio, empresa ou cliente real aparece.
+- Testes: 401 passaram (4 ignorados) na CI do GitHub no último commit da `main` do Audit.
+- Afirmações do texto conferidas no README, no registro do projeto e no código (idioma pt-BR, checagem de autorização por origem, modo passivo recusa etapas ativas).
+- 35/35 testes do portfólio (inclui axe em /en/cases/audit/).

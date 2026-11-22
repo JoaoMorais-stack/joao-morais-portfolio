@@ -326,6 +326,65 @@ export const CASES: CaseStudy[] = [
       ],
     },
   },
+  {
+    slug: "audit",
+    tests: 401, // GitHub Actions, último commit da main (401 passaram, 4 ignorados)
+    status: { pt: "Ferramenta de uso próprio, versão 0.1", en: "In-house tool, version 0.1" },
+    problem: {
+      pt: "Antes de falar de segurança com uma empresa, eu queria entender o que ela expõe na internet usando só fontes públicas. E, quando há autorização, conduzir o teste com escopo registrado, limites claros e evidência de tudo. Juntei as duas coisas num app local, sem IA e sem API paga.",
+      en: "Before talking security with a company, I wanted to understand what it exposes online using only public sources. And when there is authorization, to run the test with a recorded scope, clear limits and evidence for everything. I put both in one local app, with no AI and no paid API.",
+    },
+    features: {
+      pt: [
+        "Pesquisa passiva de um domínio: DNS, registro (RDAP), certificados públicos (Certificate Transparency) e histórico do Internet Archive. Não acessa o site.",
+        "Auditoria autorizada que orquestra httpx, Nmap e ffuf sob um orçamento único de requisições, com cada ferramenta registrada no resultado.",
+        "Cruzamento das versões encontradas com CVEs na NVD, com prioridade por CVSS, EPSS e o catálogo CISA KEV, sem nenhuma requisição ao alvo.",
+        "Importação de evidências do Nmap (XML), Nuclei (JSONL) e inventários CycloneDX.",
+        "Relatórios executivos e técnicos em HTML e PDF, cada edição com hash SHA-256.",
+      ],
+      en: [
+        "Passive domain research: DNS, registration (RDAP), public certificates (Certificate Transparency) and Internet Archive history. It doesn't touch the site.",
+        "Authorized audit that runs httpx, Nmap and ffuf under one request budget, with every tool recorded in the result.",
+        "Matching of the versions found against CVEs in the NVD, prioritized by CVSS, EPSS and the CISA KEV catalog, with no request to the target.",
+        "Evidence import from Nmap (XML), Nuclei (JSONL) and CycloneDX inventories.",
+        "Executive and technical reports in HTML and PDF, each edition with a SHA-256 hash.",
+      ],
+    },
+    flow: {
+      pt: ["Interface NiceGUI", "Registro de autorização e escopo", "Coletores e ferramentas", "Correlação e classificação", "SQLite e relatórios"],
+      en: ["NiceGUI interface", "Authorization and scope record", "Collectors and tools", "Correlation and classification", "SQLite and reports"],
+    },
+    flowNote: {
+      pt: "Roda no Windows e no Kali Linux. Tudo fica num banco local; as fontes públicas só são consultadas quando eu peço.",
+      en: "Runs on Windows and Kali Linux. Everything stays in a local database; public sources are only queried when I ask.",
+    },
+    safety: {
+      pt: [
+        "Nada ativo sem um registro de autorização com escopo, exclusões, regras e janela de validade, conferido e confirmado antes de começar.",
+        "Alvo fora do escopo é recusado, e a pesquisa passiva rejeita qualquer etapa ativa.",
+        "Indício nunca vira \"vulnerabilidade confirmada\": correspondência de CVE por versão aparece como algo a validar.",
+        "Relatórios gerados localmente em contexto offline, com scripts e requisições bloqueados, e testes de laboratório marcados como demonstração.",
+      ],
+      en: [
+        "Nothing active runs without an authorization record with scope, exclusions, rules and a validity window, reviewed and confirmed first.",
+        "Targets outside the scope are refused, and passive research rejects any active step.",
+        "A lead never becomes a \"confirmed vulnerability\": a CVE match by version shows up as something to validate.",
+        "Reports are generated locally in an offline context with scripts and requests blocked, and lab tests are marked as demos.",
+      ],
+    },
+    limits: {
+      pt: [
+        "A aquisição contra origens externas ainda não foi homologada num domínio público. As telas aqui são do laboratório local.",
+        "Versão lida em banner pode enganar: distribuições corrigem falhas sem mudar o número (backport).",
+        "Interface só em português.",
+      ],
+      en: [
+        "Acquisition against external origins hasn't been validated on a public domain yet. The screens here come from the local lab.",
+        "A version read from a banner can mislead: distributions fix flaws without changing the number (backport).",
+        "Interface in Portuguese only.",
+      ],
+    },
+  },
 ];
 
 export const CASE_UI: L<{

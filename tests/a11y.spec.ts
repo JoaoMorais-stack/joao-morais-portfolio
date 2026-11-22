@@ -3,7 +3,7 @@ import { expect, test } from "@playwright/test";
 
 // Auditoria automática (axe-core, regras WCAG 2.0/2.1/2.2 A e AA).
 // Movimento reduzido para medir o estado final das animações de entrada.
-const PAGES = ["/pt/", "/en/", "/pt/cases/ebinex/", "/en/cases/student/", "/pt/cases/leadfinder/"];
+const PAGES = ["/pt/", "/en/", "/pt/cases/ebinex/", "/en/cases/student/", "/pt/cases/leadfinder/", "/en/cases/audit/"];
 
 for (const path of PAGES) {
   for (const vp of [
