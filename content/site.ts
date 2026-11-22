@@ -122,8 +122,8 @@ export const PROJECTS: Project[] = [
       en: "Windows app that finds businesses on OpenStreetMap, merges duplicate records, checks their websites and points out what each business is missing online, with rules that explain why. It has a simple CRM and keeps everything in a local database.",
     },
     note: {
-      pt: "Código privado. As telas usam empresas fictícias.",
-      en: "Private code. The screens use fictional businesses.",
+      pt: "As telas usam empresas fictícias.",
+      en: "The screens use fictional businesses.",
     },
     extraShots: [
       { id: "company", alt: { pt: "Ficha de uma empresa fictícia com canais de contato e oportunidades.", en: "Record of a fictional business with contact channels and opportunities." } },
