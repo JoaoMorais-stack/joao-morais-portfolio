@@ -955,6 +955,11 @@ main {
   pointer-events: none;
 }
 
+/* capturas densas (tabelas) pedem um véu mais forte atrás do texto do painel aberto */
+.panel[data-open]::after {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.97) 0%, rgba(0, 0, 0, 0.9) 38%, rgba(0, 0, 0, 0.45) 58%, transparent 78%);
+}
+
 .panel-trigger {
   position: absolute;
   inset: 0;

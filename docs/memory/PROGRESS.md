@@ -81,3 +81,11 @@ cases sanitizados de projetos privados (com autorização), limpeza da documenta
 - Segurança: npm audit 0, OSV-Scanner 0 (74 pacotes), Semgrep 0 alertas (30 arquivos). 31/31 testes.
 - Publicada (main = 0307406). Produção: 31/31 testes; Lighthouse celular 80–86 (antes 77), TBT 370–620 ms (antes 710),
   LCP 2,8 s, 388 KB (antes 611 KB), acessibilidade 100; desktop 98, acessibilidade 100.
+
+## 2026-11-22 — Novos visuais dos apps no portfólio
+- Redesign só de front nos 5 repositórios de demonstração, cada um com identidade própria: Ebinex (violeta neon), Clinical (violeta com ciano), Student (vidro diurno claro), Workforce (grafite e esmeralda), Gerador de Escalas (azul-noite e dourado). Um estilo neo-brutalista para o Workforce foi rejeitado pelo usuário e descartado.
+- PRs abertos em cada repositório (branch `design/premium-ui`); merge aprovado pelo usuário, mas bloqueado pela política de permissões da sessão — fazer pelo GitHub.
+- Capturas refeitas com `scripts/capture-projects.mjs` (apps rodando localmente) + `npm run media`. Capturas anteriores em `_captures/anterior-2026-11-20/`.
+- Galeria: véu mais forte atrás do texto do painel aberto (capturas com tabela densa).
+- Ambiente: após atualização do Windows, o primeiro `import sqlite3` levou ~34 s; os servidores Python só respondem depois disso. Rodar pelo painel Terminal.
+- Testes: typecheck, build e 31/31 e2e + axe.
