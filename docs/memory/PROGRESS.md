@@ -108,3 +108,4 @@ cases sanitizados de projetos privados (com autorização), limpeza da documenta
 - Afirmações do texto conferidas no README, no registro do projeto e no código (idioma pt-BR, checagem de autorização por origem, modo passivo recusa etapas ativas).
 - 35/35 testes do portfólio (inclui axe em /en/cases/audit/).
 - Publicado em produção em 2026-11-22 (main = 17cca06). 35/35 testes contra a URL de produção; /pt e /en do case 200; imagens conferidas por hash; inspeção visual 1440 e 375 sem erros nem estouro.
+- 2026-11-22: o João confirmou que os textos pessoais estão corretos (certificações eJPT "em preparação" e OSCP "objetivo a longo prazo"; menção ao hospital em "Sobre"). Pendência encerrada.
