@@ -52,9 +52,9 @@ test.describe("conteúdo e SEO", () => {
 });
 
 test.describe("páginas de case", () => {
-  const slugs = ["ebinex", "clinical", "workforce", "shift", "student"];
+  const slugs = ["ebinex", "clinical", "workforce", "shift", "student", "leadfinder"];
   for (const lang of ["pt", "en"] as const) {
-    test(`os 5 cases em /${lang}/ abrem sem erro e sem rolagem lateral no celular`, async ({ page }) => {
+    test(`os 6 cases em /${lang}/ abrem sem erro e sem rolagem lateral no celular`, async ({ page }) => {
       const errors = collectErrors(page);
       await page.setViewportSize({ width: 375, height: 812 });
       for (const slug of slugs) {

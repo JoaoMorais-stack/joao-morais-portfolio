@@ -50,7 +50,11 @@ export default function SqueezeGallery({ projects, t, lang }: { projects: Projec
                 height={600}
                 loading="lazy"
                 decoding="async"
-                alt={lang === "pt" ? `Tela real do ${p.name} rodando localmente.` : `Real screen of ${p.name} running locally.`}
+                alt={
+                  p.desktopOnly
+                    ? lang === "pt" ? `Tela do ${p.name} com dados fictícios.` : `${p.name} screen with fictional data.`
+                    : lang === "pt" ? `Tela real do ${p.name} rodando localmente.` : `Real screen of ${p.name} running locally.`
+                }
               />
               <button
                 ref={(el) => {
@@ -80,9 +84,13 @@ export default function SqueezeGallery({ projects, t, lang }: { projects: Projec
                     <a className="link-arrow" href={`/${lang}/cases/${p.slug}/`} tabIndex={open ? 0 : -1}>
                       {CASE_UI[lang].viewCase}
                     </a>
-                    <a className="link-arrow link-quiet" href={p.repo} target="_blank" rel="noopener noreferrer" tabIndex={open ? 0 : -1}>
-                      GitHub
-                    </a>
+                    {p.repo ? (
+                      <a className="link-arrow link-quiet" href={p.repo} target="_blank" rel="noopener noreferrer" tabIndex={open ? 0 : -1}>
+                        GitHub
+                      </a>
+                    ) : (
+                      <span className="panel-private">{CASE_UI[lang].privateCode}</span>
+                    )}
                   </div>
                 </div>
               </div>

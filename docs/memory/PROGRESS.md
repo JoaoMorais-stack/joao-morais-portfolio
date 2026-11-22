@@ -91,3 +91,12 @@ cases sanitizados de projetos privados (com autorização), limpeza da documenta
 - Testes: typecheck, build e 31/31 e2e + axe.
 - Publicado em produção em 2026-11-22 (commit 65e974b, fast-forward de `main`). As 10 imagens em produção conferem por hash com as locais; /pt/, /en/ e páginas de case respondem 200; inspeção visual da produção em 1440 e 375 sem estouro de largura e sem erros. Evidências em `screenshots/producao-2026-11-22/`.
 - Pendente: o usuário mesclar os 5 PRs `design/premium-ui` no GitHub (o merge foi bloqueado pela permissão da sessão).
+- Atualização: os 5 PRs foram mesclados pelo João no GitHub em 2026-11-22; clones locais sincronizados com `main`.
+
+## 2026-11-22 — Cases privados: LeadFinder (prévia)
+- Plano aprovado: Audit com telas reais; LeadFinder só com dados fictícios ou só texto; Studio fora; nada alterado nos repositórios privados.
+- LeadFinder: interface React real rodando no Vite, com o backend Tauri substituído no navegador por um mock só com empresas fictícias (sites `.example`, telefones 5555). Nenhum banco aberto — a pasta de dados de dev do João não foi tocada. Mock e script ficam fora do Git (`_audit_runtime/leadfinder-tools/`), porque revelam a estrutura interna do app privado.
+- Projeto pode não ter `repo` (código privado) e ser `desktopOnly` (sem celular); página de case ganha "Outras telas".
+- Testes do case: vitest 9/9 executado hoje; cargo 156/156 vem do registro do próprio projeto (versão 0.4.3) — a compilação local está lenta por causa do antivírus.
+- Audit: o app recusa domínios reservados (`example.com`) por design; analisar domínio de terceiros exporia dados reais. Pendente decisão do João: usar um domínio dele ou publicar o case só em texto.
+- 33/33 testes (inclui axe na página nova).

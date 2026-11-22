@@ -8,7 +8,7 @@ type L<T> = Record<Locale, T>;
 export type CaseStudy = {
   slug: string;
   tests: number;
-  run: string;
+  run?: string; // ausente = projeto privado, sem instruções de execução
   status: L<string>;
   problem: L<string>;
   features: L<string[]>;
@@ -267,6 +267,65 @@ export const CASES: CaseStudy[] = [
       en: ["It is not an integration template for a real portal.", "It does no login, browser control or scraping."],
     },
   },
+  {
+    slug: "leadfinder",
+    tests: 165, // cargo 156 + vitest 9
+    status: { pt: "Ferramenta de uso próprio, versão 0.4.3", en: "In-house tool, version 0.4.3" },
+    problem: {
+      pt: "Para oferecer sites e automações a pequenos negócios, eu precisava de uma lista de estabelecimentos com contato e com sinais claros do que falta no digital de cada um. Não queria pagar por bases de leads nem raspar o Google Maps, então montei a ferramenta em cima de dados abertos.",
+      en: "To offer websites and automation to small businesses, I needed a list of places with contact details and clear signs of what each one is missing online. I didn't want to pay for lead databases or scrape Google Maps, so I built the tool on open data.",
+    },
+    features: {
+      pt: [
+        "Descoberta por bairro e segmento no OpenStreetMap, com progresso real e opção de cancelar.",
+        "Junta o mesmo estabelecimento vindo de buscas diferentes; quando a semelhança é incerta, manda para revisão manual em vez de unir sozinho.",
+        "Verifica o site oficial (HTTPS, link de WhatsApp, página de contato) lendo poucas páginas por domínio e respeitando o robots.txt.",
+        "Oportunidades geradas por regras fixas, cada uma com a evidência que usou e o grau de confiança.",
+        "CRM com funil, filtros E/OU salvos, notas, histórico campo a campo e exportação em CSV.",
+      ],
+      en: [
+        "Discovery by district and segment on OpenStreetMap, with real progress and a cancel option.",
+        "Merges the same business found by different searches; when the match is uncertain, it goes to manual review instead of being merged automatically.",
+        "Checks the official website (HTTPS, WhatsApp link, contact page) reading only a few pages per domain and respecting robots.txt.",
+        "Opportunities come from fixed rules, each one showing the evidence it used and its confidence level.",
+        "CRM with a pipeline, saved AND/OR filters, notes, field-by-field history and CSV export.",
+      ],
+    },
+    flow: {
+      pt: ["Interface React", "Comandos Tauri tipados", "Backend em Rust", "OpenStreetMap (Overpass)", "SQLite local"],
+      en: ["React interface", "Typed Tauri commands", "Rust backend", "OpenStreetMap (Overpass)", "Local SQLite"],
+    },
+    flowNote: {
+      pt: "A interface não acessa rede, arquivos nem SQL: ela só chama comandos que o backend lista um a um.",
+      en: "The interface has no access to the network, files or SQL: it can only call commands the backend lists one by one.",
+    },
+    safety: {
+      pt: [
+        "Proteção contra SSRF no verificador de sites: bloqueia loopback, redes privadas e o endereço de metadados de nuvem, inclusive depois do DNS e em cada redirecionamento.",
+        "Só http e https nas portas 80 e 443, com limite de tamanho e de tempo por página.",
+        "Consultas ao servidor público do Overpass uma de cada vez, com intervalo mínimo e respeito a HTTP 429.",
+        "Falha de rede nunca apaga dados, e o banco tem backup automático com verificação de integridade na restauração.",
+      ],
+      en: [
+        "SSRF protection in the website checker: it blocks loopback, private networks and the cloud metadata address, including after DNS and on every redirect.",
+        "Only http and https on ports 80 and 443, with size and time limits per page.",
+        "Queries to the public Overpass server run one at a time, with a minimum interval and respect for HTTP 429.",
+        "A network failure never deletes data, and the database has automatic backups with an integrity check on restore.",
+      ],
+    },
+    limits: {
+      pt: [
+        "Só para Windows por enquanto.",
+        "Depende do que está cadastrado no OpenStreetMap: muitos negócios aparecem sem telefone ou site.",
+        "Não envia mensagens. O contato com cada empresa é feito por mim.",
+      ],
+      en: [
+        "Windows only for now.",
+        "It depends on what is mapped in OpenStreetMap: many businesses show up without a phone or website.",
+        "It doesn't send messages. I contact each business myself.",
+      ],
+    },
+  },
 ];
 
 export const CASE_UI: L<{
@@ -281,6 +340,10 @@ export const CASE_UI: L<{
   repo: string;
   next: string;
   viewCase: string;
+  privateCode: string;
+  privateNote: string;
+  moreShots: string;
+  desktopApp: string;
 }> = {
   pt: {
     back: "Voltar aos projetos",
@@ -294,6 +357,10 @@ export const CASE_UI: L<{
     repo: "Código no GitHub",
     next: "Próximo projeto",
     viewCase: "Ver o case",
+    privateCode: "Código privado",
+    privateNote: "O código deste projeto não é público. Posso mostrar o funcionamento numa conversa.",
+    moreShots: "Outras telas",
+    desktopApp: "App desktop · Windows",
   },
   en: {
     back: "Back to projects",
@@ -307,5 +374,9 @@ export const CASE_UI: L<{
     repo: "Code on GitHub",
     next: "Next project",
     viewCase: "View the case",
+    privateCode: "Private code",
+    privateNote: "This project's code isn't public. I can walk you through it in a call.",
+    moreShots: "More screens",
+    desktopApp: "Desktop app · Windows",
   },
 };

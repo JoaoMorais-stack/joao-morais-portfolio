@@ -1444,6 +1444,82 @@ main {
   padding-right: 9%;
 }
 
+.case-shots-solo {
+  padding-right: 0;
+}
+
+/* projeto de código privado: no lugar do botão do GitHub */
+.case-private {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  max-width: 560px;
+  margin: 0;
+  color: var(--ivory-dim);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.case-private-tag {
+  padding: 6px 12px;
+  border: 1px solid rgba(236, 230, 218, 0.28);
+  border-radius: 999px;
+  color: var(--ivory);
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.panel-private {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  border-bottom: 1px solid transparent;
+  color: var(--ivory-dim);
+  font-size: 0.9rem;
+}
+
+/* telas adicionais (apps sem versão de celular) */
+.case-more {
+  margin: 0 0 clamp(72px, 12svh, 140px);
+}
+
+.case-more-title {
+  margin: 0 0 20px;
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.case-more-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.case-more-grid li {
+  overflow: hidden;
+  border: 1px solid rgba(236, 230, 218, 0.12);
+  border-radius: 12px;
+  background: var(--surface);
+}
+
+.case-more-grid li:first-child {
+  grid-column: 1 / -1;
+}
+
+.case-more-grid img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .case-phone {
   position: absolute;
   right: 0;

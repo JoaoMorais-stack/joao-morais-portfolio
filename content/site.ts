@@ -19,8 +19,10 @@ export const LINKS = {
 export type Project = {
   slug: string;
   name: string;
-  repo: string;
+  repo?: string; // ausente = código privado
   shot: string; // prefixo das capturas em /media/projects
+  desktopOnly?: boolean; // app sem versão de celular: sem captura mobile
+  extraShots?: { id: string; alt: Record<Locale, string> }[]; // telas adicionais na página de case
   stack: string[];
   kind: Record<Locale, string>;
   summary: Record<Locale, string>;
@@ -107,6 +109,27 @@ export const PROJECTS: Project[] = [
       pt: "Portal simulado. Só roda localmente.",
       en: "Simulated portal. Runs locally only.",
     },
+  },
+  {
+    slug: "leadfinder",
+    name: "MoraisSec LeadFinder",
+    shot: "leadfinder",
+    desktopOnly: true,
+    stack: ["Tauri 2", "Rust", "React", "TypeScript", "SQLite"],
+    kind: { pt: "App desktop de prospecção", en: "Desktop prospecting app" },
+    summary: {
+      pt: "Aplicativo para Windows que encontra estabelecimentos no OpenStreetMap, junta cadastros duplicados, verifica os sites e aponta o que falta no digital de cada negócio, com regras que explicam o motivo. Tem um CRM simples e guarda tudo num banco local.",
+      en: "Windows app that finds businesses on OpenStreetMap, merges duplicate records, checks their websites and points out what each business is missing online, with rules that explain why. It has a simple CRM and keeps everything in a local database.",
+    },
+    note: {
+      pt: "Código privado. As telas usam empresas fictícias.",
+      en: "Private code. The screens use fictional businesses.",
+    },
+    extraShots: [
+      { id: "company", alt: { pt: "Ficha de uma empresa fictícia com canais de contato e oportunidades.", en: "Record of a fictional business with contact channels and opportunities." } },
+      { id: "explore", alt: { pt: "Lista de empresas fictícias a prospectar, com contatos e prioridade.", en: "List of fictional businesses to prospect, with contacts and priority." } },
+      { id: "opportunities", alt: { pt: "Regras de oportunidade com grau de confiança e quantidade aberta.", en: "Opportunity rules with confidence level and open count." } },
+    ],
   },
 ];
 

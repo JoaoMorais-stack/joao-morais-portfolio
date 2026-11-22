@@ -10,7 +10,7 @@ export default function CasePage({ t, lang, project, study, next }: Props) {
   const ui = CASE_UI[lang];
   const other = lang === "pt" ? "en" : "pt";
   const base = `/media/projects/${project.shot}`;
-  const repoName = project.repo.split("/").pop();
+  const repoName = project.repo?.split("/").pop();
 
   return (
     <>
@@ -32,18 +32,25 @@ export default function CasePage({ t, lang, project, study, next }: Props) {
             <li>{ui.tests(study.tests)}</li>
             <li>{project.note[lang]}</li>
           </ul>
-          <a className="btn btn-primary" href={project.repo} target="_blank" rel="noopener noreferrer">
-            <span>{ui.repo}</span>
-          </a>
+          {project.repo ? (
+            <a className="btn btn-primary" href={project.repo} target="_blank" rel="noopener noreferrer">
+              <span>{ui.repo}</span>
+            </a>
+          ) : (
+            <p className="case-private">
+              <span className="case-private-tag">{ui.privateCode}</span>
+              {ui.privateNote}
+            </p>
+          )}
         </header>
 
-        <figure className="case-shots">
+        <figure className={project.desktopOnly ? "case-shots case-shots-solo" : "case-shots"}>
           <div className="device-browser">
             <div className="browser-bar" aria-hidden="true">
               <span />
               <span />
               <span />
-              <p>127.0.0.1</p>
+              <p>{project.desktopOnly ? ui.desktopApp : "127.0.0.1"}</p>
             </div>
             <img
               src={`${base}-desktop-1600.webp`}
@@ -56,6 +63,7 @@ export default function CasePage({ t, lang, project, study, next }: Props) {
               alt={lang === "pt" ? `Tela do ${project.name} no desktop, rodando localmente.` : `${project.name} on desktop, running locally.`}
             />
           </div>
+          {!project.desktopOnly && (
           <div className="case-phone">
             <img
               src={`${base}-mobile-520.webp`}
@@ -68,7 +76,30 @@ export default function CasePage({ t, lang, project, study, next }: Props) {
               alt={lang === "pt" ? `${project.name} na largura de um celular.` : `${project.name} at phone width.`}
             />
           </div>
+          )}
         </figure>
+
+        {project.extraShots && (
+          <section className="case-more" aria-labelledby="c-more">
+            <h2 id="c-more" className="case-more-title">{ui.moreShots}</h2>
+            <ul className="case-more-grid">
+              {project.extraShots.map((x) => (
+                <li key={x.id}>
+                  <img
+                    src={`${base}-${x.id}-1600.webp`}
+                    srcSet={`${base}-${x.id}-960.webp 960w, ${base}-${x.id}-1600.webp 1600w`}
+                    sizes="(max-width: 760px) 92vw, 45vw"
+                    width={1600}
+                    height={1000}
+                    loading="lazy"
+                    decoding="async"
+                    alt={x.alt[lang]}
+                  />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
 
         <div className="case-body">
           <section className="case-section" aria-labelledby="c-problem">
@@ -122,12 +153,14 @@ export default function CasePage({ t, lang, project, study, next }: Props) {
             </ul>
           </section>
 
+          {project.repo && study.run && (
           <section className="case-section" aria-labelledby="c-run">
             <h2 id="c-run">{ui.run}</h2>
             <pre className="case-code">
               <code>{`git clone ${project.repo}\ncd ${repoName}\n${study.run}`}</code>
             </pre>
           </section>
+          )}
         </div>
 
         <a className="case-next" href={`/${lang}/cases/${next.slug}/`}>

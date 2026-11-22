@@ -13,8 +13,18 @@ const outAbout = resolve(root, "public/media/about");
 await mkdir(outProjects, { recursive: true });
 await mkdir(outAbout, { recursive: true });
 
-const apps = ["ebinex", "clinical", "workforce", "shift", "student"];
+const apps = ["ebinex", "clinical", "workforce", "shift", "student", "leadfinder"];
+// Telas adicionais das páginas de case (apps sem versão de celular).
+const extras = { leadfinder: ["company", "explore", "opportunities"] };
 const jobs = [];
+for (const [app, ids] of Object.entries(extras)) {
+  for (const id of ids) {
+    const file = resolve(captures, `${app}-${id}.png`);
+    if (!existsSync(file)) continue;
+    jobs.push(sharp(file).resize({ width: 1600 }).webp({ quality: 82 }).toFile(resolve(outProjects, `${app}-${id}-1600.webp`)));
+    jobs.push(sharp(file).resize({ width: 960 }).webp({ quality: 78 }).toFile(resolve(outProjects, `${app}-${id}-960.webp`)));
+  }
+}
 for (const app of apps) {
   const desktop = resolve(captures, `${app}-desktop.png`);
   const mobile = resolve(captures, `${app}-mobile.png`);
