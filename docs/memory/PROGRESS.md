@@ -89,3 +89,5 @@ cases sanitizados de projetos privados (com autorização), limpeza da documenta
 - Galeria: véu mais forte atrás do texto do painel aberto (capturas com tabela densa).
 - Ambiente: após atualização do Windows, o primeiro `import sqlite3` levou ~34 s; os servidores Python só respondem depois disso. Rodar pelo painel Terminal.
 - Testes: typecheck, build e 31/31 e2e + axe.
+- Publicado em produção em 2026-11-22 (commit 65e974b, fast-forward de `main`). As 10 imagens em produção conferem por hash com as locais; /pt/, /en/ e páginas de case respondem 200; inspeção visual da produção em 1440 e 375 sem estouro de largura e sem erros. Evidências em `screenshots/producao-2026-11-22/`.
+- Pendente: o usuário mesclar os 5 PRs `design/premium-ui` no GitHub (o merge foi bloqueado pela permissão da sessão).
